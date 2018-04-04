@@ -1,0 +1,8 @@
+<input type="file" accept="audio/*" capture id="recorder">
+<audio id="player" controls></audio>
+
+<%= form_for @track do |f| %>
+  <%= f.label :audio %>
+  <%= f.file_field :audio %>
+  <%= submit_tag 'Upload' %>
+<% end %>

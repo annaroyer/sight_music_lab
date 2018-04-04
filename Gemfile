@@ -17,6 +17,7 @@ gem 'paperclip'
 gem 'faraday'
 gem 'figaro'
 gem 'jquery-rails'
+gem 'vex_rails'
 
 
 group :development, :test do

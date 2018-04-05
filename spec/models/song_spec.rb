@@ -5,7 +5,11 @@ describe Song do
     it 'is initialized with two hashes and has many attributes' do
       song = Song.new(song_attributes)
 
-      expect(song.key)
+      expect(song.key).to eq('Gm')
+      expect(song.notes.length).to eq(22)
+      song.notes.each do |note|
+        expect(note.class).to eq(Note)
+      end
     end
   end
 end

@@ -10,6 +10,7 @@ describe 'As a user' do
       click_button 'Log In'
 
       expect(current_path).to eq('/dashboard')
+      expect(page).to have_content('Welcome, Anna')
     end
   end
 end

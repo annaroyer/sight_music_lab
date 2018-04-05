@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ .hidden-content {
+   display: none;
+   color: green;
+ }

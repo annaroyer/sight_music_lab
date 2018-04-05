@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  enum role: %w(user admin)
+
   def self.update_or_create(auth)
     user = User.find_by(uid: auth[:uid]) || User.new
     user.attributes = {

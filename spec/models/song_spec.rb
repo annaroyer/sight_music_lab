@@ -2,13 +2,17 @@ require 'rails_helper'
 
 describe Song do
   context 'attributes' do
+    subject { Song.new(melody_attributes) }
     it 'is initialized with two hashes and has many attributes' do
-      song = Song.new(melody_attributes)
+      expect(subject.key).to eq('Gm')
+      expect(subject.time).to eq('4/4')
+    end
+  end
 
-      expect(song.key).to eq('Gm')
-      expect(song.notes.length).to eq(22)
-      song.notes.each do |note|
-        expect(note.class).to eq(Note)
+  context 'instance methods' do
+    describe '#notation' do
+      it 'returns the full vextab style notation of the song' do
+        expect(subject).notation.to eq('C-D-E/4 F#/5 | G-A-B/4 F#/5')
       end
     end
   end

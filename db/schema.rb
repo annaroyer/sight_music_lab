@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180405215118) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string "uid"
+    t.integer "uid"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180405215118) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end

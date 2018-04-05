@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Song do
   context 'attributes' do
     it 'is initialized with two hashes and has many attributes' do
-      song = Song.new(song_attributes)
+      song = Song.new(melody_attributes)
 
       expect(song.key).to eq('Gm')
       expect(song.notes.length).to eq(22)

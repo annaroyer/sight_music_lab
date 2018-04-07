@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404001318) do
+ActiveRecord::Schema.define(version: 20180405215118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20180404001318) do
     t.string "audio_content_type"
     t.integer "audio_file_size"
     t.datetime "audio_updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "uid"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "token"
+    t.integer "oauth_expires_at"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end

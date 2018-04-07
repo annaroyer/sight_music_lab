@@ -1,16 +1,14 @@
 class TracksController < ApplicationController
   def create
-    binding.pry
-    track = params[:track][:audio].tempfile
+    track = Track.create(track_params)
+    file = File.open(track.audio.path)
     conn = Faraday.new('https://api.sonicapi.com/')
-    payload = {
-      access_id: ENV['SONICAPI_KEY'],
-      format: 'json',
-      input_file: track
-    }.to_json
     response = conn.post('analyze/melody') do |faraday|
-              faraday.body = payload
+              faraday.params['access_id'] = ENV['SONICAPI_KEY']
+              faraday.params['format'] = 'json'
+              faraday.params['input_file'] = file
             end
+            binding.pry
     music = JSON.parse(response.body, symbolize_names: true)
   end
 

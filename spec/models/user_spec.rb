@@ -20,7 +20,7 @@ describe User, type: :model do
     User.update_or_create(auth)
     new_user = User.first
 
-    expect(new_user.uid).to eq(12345)
+    expect(new_user.uid).to eq("12345")
     expect(new_user.email).to eq("anro0672@colorado.edu")
     expect(new_user.first_name).to eq("Anna")
     expect(new_user.last_name).to eq("Royer")

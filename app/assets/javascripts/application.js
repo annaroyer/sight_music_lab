@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery3
+//= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
 
 var recorder = document.getElementById('recorder');
 var player = document.getElementById('player');
@@ -24,7 +26,6 @@ recorder.addEventListener('change', function(e) {
 
   var formData = new FormData();
   formData.append('input_file', recorder.files[0]);
-  formData.append
 
   fetch('https://api.sonicapi.com/analyze/melody?access_id=67a84cd6-5d82-4f3b-bf96-752496ab2670&format=json', {
     method: 'POST',
@@ -32,7 +33,11 @@ recorder.addEventListener('change', function(e) {
   })
   .then(response => response.json())
   .catch(error => console.error('Error:', error))
-  .then(response => console.log('Success:', response));
+  .then(response => $.ajax({
+    method: 'POST',
+    url: 'tracks',
+    data: response
+  }))
   debugger
 });
 
@@ -83,3 +88,5 @@ var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
 
 // Render voice
 voice.draw(context, stave);
+
+});

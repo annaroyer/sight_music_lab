@@ -1,5 +1,6 @@
 class TracksController < ApplicationController
   def create
+    binding.pry
     track = Track.create(track_params)
     file = File.open(track.audio.path)
     conn = Faraday.new('https://api.sonicapi.com/')

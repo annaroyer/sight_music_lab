@@ -1,8 +1,17 @@
+$aquamarine: #02C8A7;
 .navbar {
   display: flex;
   justify-content: space-between;
+  background-color: #F0EFF0;
 }
 
 .nav-right, .nav-left {
-  padding: 25px;
+  padding: 15px 30px;
+}
+
+.nav-left {
+  font: {
+    size: 30px;
+    family: 'Rufina', serif;
+  }
 }

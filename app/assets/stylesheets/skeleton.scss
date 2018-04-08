@@ -1,9 +1,16 @@
-html {
-  background: url('moon.jpg') no-repeat center center fixed;
-  background-size: cover;
+$sky: #7CDBD5;
+
+body {
+  margin: 0px;
 }
 
-.new-account {
+.main-root {
   display: flex;
-  justify-content: center;
+  background-color: #A7D2CB;
+  padding: 30px 80px;
+}
+
+.right-main {
+  padding-top: 25%;
+  padding-left: 15%;
 }

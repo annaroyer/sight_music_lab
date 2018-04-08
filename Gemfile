@@ -17,7 +17,7 @@ gem 'paperclip'
 gem 'faraday'
 gem 'figaro'
 gem 'jquery-rails'
-
+gem "omniauth-google-oauth2", "~> 0.2.1"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -29,6 +29,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
 end
 
 group :development do

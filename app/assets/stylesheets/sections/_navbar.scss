@@ -1,0 +1,26 @@
+$aquamarine: #02C8A7;
+.navbar {
+  display: flex;
+  background-color: #F0EFF0;
+  font-family: 'Rufina', serif;
+
+  .nav-right, .nav-left {
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+
+  .nav-left {
+    font-size: 30px;
+  }
+
+  .nav-right {
+    justify-content: flex-end;
+  }
+  
+  .nav-item {
+    padding: 0px 20px;
+    font-family: 'Raleway', sans-serif;
+  }
+}

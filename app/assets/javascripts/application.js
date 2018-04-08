@@ -34,11 +34,10 @@ recorder.addEventListener('change', function(e) {
   .then(response => response.json())
   .catch(error => console.error('Error:', error))
   .then(response => $.ajax({
-    method: 'POST',
-    url: 'tracks',
+    method: 'GET',
+    url: 'notes',
     data: response
   }))
-  debugger
 });
 
 var handleSuccess = function(stream) {

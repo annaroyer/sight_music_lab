@@ -4,6 +4,6 @@
   </div>
   <div class="nav-right">
     <p>Welcome, <%= current_user.first_name %></p>
-    <%= button_to 'Log Out', logout_path, method: :get %>
+    <%= button_to 'Log Out', logout_path, method: :get, class: 'fancy-button' %>
   </div>
 </nav>

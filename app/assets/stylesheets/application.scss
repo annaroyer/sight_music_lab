@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import 'base';
-@import 'skeleton';
-@import 'components/buttons';
-@import 'sections/navbar';
+@import url('https://fonts.googleapis.com/css?family=Raleway|Rufina');
+
+$bright-coral: #F53240;
+$golden: #F9BE02;

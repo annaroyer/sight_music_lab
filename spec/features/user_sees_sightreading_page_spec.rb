@@ -8,7 +8,8 @@ describe 'As a user' do
 
       visit '/sight-read'
 
-      expect(page).to have_css('score')
+      expect(page).to have_css('.exercises')
+      expect(page).to 
     end
   end
 end

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/dashboard', to: 'dashboard#index'
+  get '/sight-read', to: 'sight_read#index'
 end

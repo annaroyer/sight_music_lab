@@ -9,7 +9,7 @@ describe 'As a user' do
       visit '/sight-read'
 
       expect(page).to have_css('.exercises')
-      expect(page).to 
+      expect(page).to have_content('120 bpm')
     end
   end
 end

@@ -13,11 +13,5 @@ describe 'As a user' do
       expect(page).to have_css('.exercises')
       expect(page).to have_content('120 bpm')
     end
-
-    scenario 'I can upload an audio file' do
-      visit '/sight-read'
-
-      click_on 'Upload File'
-    end
   end
 end

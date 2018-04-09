@@ -33,12 +33,13 @@ $(document).ready(function(){
     })
     .then(response => response.json())
     .catch(error => console.error('Error:', error))
+    debugger
     .then(response => fetch('/api/v1/attempts', {
                         method: 'POST',
                         body: response
 
-                      }
-                    ))
+                      })
+                    )
     });
   });
 });

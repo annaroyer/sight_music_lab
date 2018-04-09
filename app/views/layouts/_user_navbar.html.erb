@@ -1,10 +1,12 @@
 <nav class="navbar">
   <div class="nav-left">
     <%= image_tag 'treble-clef.svg', class: 'brand-img' %>
-    Sight Music Lab
+    <%= link_to 'Sight Music Lab', root_path, class: 'brand-link' %>
+  </div>
+  <div class="nav-center">
+    <%= link_to 'Sight Read', sight_read_path, class: 'nav-item' %>    
   </div>
   <div class="nav-right">
-    <%= link_to 'Sight Read', root_path, class: 'nav-item' %>
     <p class="nav-item">Welcome, <%= current_user.first_name %></p>
     <%= button_to 'Log Out', logout_path, method: :get, class: 'fancy-button' %>
   </div>

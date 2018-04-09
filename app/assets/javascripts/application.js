@@ -17,29 +17,24 @@
 //= require tabdiv-debug.js
 //= require_tree .
 
-$(document).ready(function(){
-  var player = $('#player');
+var recorder = document.getElementById('recorder');
+var player = document.getElementById('player');
 
-  $('#recorder').on('change', function(e){
-    var file = e.target.files[0];
-    player.src = URL.createObjectURL(file);
+recorder.addEventListener('change', function(e) {
+  var file = e.target.files[0];
+  player.src = URL.createObjectURL(file);
 
-    var formData = new FormData();
-    formData.append('input_file', recorder.files[0]);
-
-    fetch('https://api.sonicapi.com/analyze/melody?access_id=67a84cd6-5d82-4f3b-bf96-752496ab2670&format=json', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .catch(error => console.error('Error:', error))
-    debugger
-    .then(response => fetch('/api/v1/attempts', {
-                        method: 'POST',
-                        body: response
-
-                      })
-                    )
-    });
-  });
+  var formData = new FormData();
+  formData.append('input_file', recorder.files[0]);
+  debugger
+  fetch('https://api.sonicapi.com/analyze/melody?access_id=67a84cd6-5d82-4f3b-bf96-752496ab2670&format=json', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .catch(error => console.error('Error:', error))
+  .then(response => fetch('/api/v1/attempts', {
+    method: 'POST',
+    body: response
+  }))
 });

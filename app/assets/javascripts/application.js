@@ -35,9 +35,9 @@ $(document).ready(function(){
     .then(response => response.json())
     .catch(error => console.error('Error:', error))
     .then(response => $.ajax({
-      method: 'POST',
-      url: 'api/v1/attempts',
-      data: response
-    }))
+        method: 'POST',
+        url: 'api/v1/attempts',
+        data: response
+      }))
+    })
   });
-});

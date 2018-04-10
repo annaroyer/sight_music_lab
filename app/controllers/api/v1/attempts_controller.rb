@@ -1,5 +1,6 @@
 class Api::V1::AttemptsController < ApiController
   def create
-    binding.pry
+    attempt = Attempt.create(params[:melody_result])
+    render json: attempt
   end
 end

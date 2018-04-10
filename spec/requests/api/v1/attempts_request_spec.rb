@@ -13,7 +13,6 @@ describe 'Attempts API' do
   end
 end
 
-
 def melody_analysis
   {status: {code: "200"},
     melody_result:

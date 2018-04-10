@@ -4,6 +4,11 @@ describe 'Attempts API' do
   context 'post api/v1/attempts' do
     it 'returns notational representation of the melodic analysis' do
       post '/api/v1/attempts', params:  melody_analysis
+
+      binding.pry
+      attempt = JSON.parse(response.body)
+      expect(attempt.first).to eq([{duration: :h, name: 'E/4'}, {duration: :h, name: 'B/4'}])
+      expect(attempt.first).to eq([{duration: :w, name: 'E/4'}])
     end
   end
 end

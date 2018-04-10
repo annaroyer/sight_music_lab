@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 20180410143909) do
     t.index ["user_id"], name: "index_attempts_on_user_id"
   end
 
-  create_table "tracks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "audio_file_name"
-    t.string "audio_content_type"
-    t.integer "audio_file_size"
-    t.datetime "audio_updated_at"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "uid"
     t.string "first_name"

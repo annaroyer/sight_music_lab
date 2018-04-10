@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'Attempts API' do
   context 'post api/v1/attempts' do
     it 'returns notational representation of the melodic analysis' do
+      user = create(:user)
+      allow_any_instance_of(ApiController).to receive(:current_user).and_return(user)
+      
       post '/api/v1/attempts', params:  melody_analysis
 
       attempt = JSON.parse(response.body)

@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20180410143909) do
 
   create_table "attempts", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "score"
     t.text "song"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

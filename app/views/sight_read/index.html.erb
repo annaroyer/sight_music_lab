@@ -1,17 +1,22 @@
 
-<main class="exercises">
+<main id="exercises">
   <input type="file" accept="audio/*" capture id="recorder">
   <audio id="player" controls></audio>
+
+  <div id="score">
+
+  </div>
 
   <div class="vex-tabdiv">
     options scale=1.2 font-size=15 width=750 space=10
     tabstave notation=true key=Eb time=4/4 tablature=false
-    notes  :h E-B/4 | :8 C/5 B-A-G/4 :h A/4 | :8 G-B-G-E-F-A-F-D/4 | :q E-F-G-F/4 | :w E/4 =||
+    notes :h E-B/4 | :8 C/5 B-A-G/4 :h A/4 | :8 G-B-G-E-F-A-F-D/4 | :q E-F-G-F/4 | :w E/4 =||
     text :w, , , , , :hd, 120 bpm
   </div>
 
   <div class="vex-tabdiv">
     options scale=1.2 font-size=15 width=750
-    tabstave notation=true key=Eb time=4/4 tablature=false
+    tabstave notation=true time=4/4 tablature=false
+    notes :q A#/3 :q D/4 :q F/4 :q D/4 |  :h A#/3 =||
   </div>
 </main>

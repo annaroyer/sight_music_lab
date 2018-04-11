@@ -10,7 +10,7 @@ describe 'As a user' do
     scenario 'I see a sightreading example' do
       visit '/sight-read'
 
-      expect(page).to have_css('.exercises')
+      expect(page).to have_css('#exercises')
       expect(page).to have_content('120 bpm')
     end
   end

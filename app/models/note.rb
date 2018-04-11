@@ -1,6 +1,8 @@
 class Note
-  def initialize(attrs, beat_type, beat_duration)
-    @beat_type = beat_type
+  attr_reader :onset_time
+
+  def initialize(attrs, single_beat_type, beat_duration)
+    @single_beat_type = single_beat_type
     @beat_duration = beat_duration
     @midi_pitch = attrs[:midi_pitch].to_f
     @onset_time = attrs[:onset_time].to_f
@@ -9,19 +11,19 @@ class Note
   end
 
   def name
-    "#{letter_note}/#{octave}"
+    "#{type} #{letter_note}/#{octave}"
   end
 
-  def type
-    beat_symbols[beat_length]
+  def beat_length
+    (single_beat_type / num_beats ).round
   end
 
-  def inaudible?
-    volume < 0.001
+  def audible?
+    volume > 0.001
   end
 
   private
-    attr_reader :midi_pitch, :duration, :beat_duration, :beat_type, :volume
+    attr_reader :midi_pitch, :duration, :beat_duration, :single_beat_type, :volume
 
     def letter_note
       letter_notes[midi_pitch.round % 12]
@@ -31,16 +33,16 @@ class Note
       (midi_pitch.round / 12) - 1
     end
 
-    def letter_notes
-      ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+    def type
+      beat_symbols[beat_length]
     end
 
     def num_beats
       duration / beat_duration
     end
 
-    def beat_length
-      (beat_type / num_beats).round
+    def letter_notes
+      ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
     end
 
     def beat_symbols

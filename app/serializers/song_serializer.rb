@@ -1,13 +1,11 @@
 class SongSerializer < ActiveModel::Serializer
   alias :read_attribute_for_serialization :send
-  attributes :key, :tse, :bpm, :notes
+  attributes :key, :tse, :each_beat, :notes
 
-  def notes
-    beats = 0
+  def notes(beats=0)
     object.notes.map do |note|
-      beats += (1.0 / note.beat_length)
-      if beats == 1
-        beats = 0
+      beats += note.num_beats
+      if beats % object.beats_per_measure == 1
         "#{note.name} | "
       else
         note.name
@@ -19,8 +17,8 @@ class SongSerializer < ActiveModel::Serializer
     object.key
   end
 
-  def bpm
-    object.bpm
+  def each_beat
+    object.each_beat
   end
 
   def tse

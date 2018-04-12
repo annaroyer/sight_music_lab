@@ -5,13 +5,15 @@ describe 'Attempts API' do
     it 'returns notational representation of the melodic analysis' do
       user = create(:user)
       allow_any_instance_of(ApiController).to receive(:current_user).and_return(user)
-      
+
       post '/api/v1/attempts', params:  melody_analysis
 
-      attempt = JSON.parse(response.body)
+      attempt = JSON.parse(response.body, symbolize_names: true)
 
-      expect(attempt[:song][:notes].first).to eq([{duration: :h, name: 'E/4'}, {duration: :h, name: 'B/4'}])
-      expect(attempt[:song][:notes].last).to eq([{duration: :w, name: 'E/4'}])
+      expect(attempt[:song][:key]).to eq("A^ Maj")
+      expect(attempt[:song][:tse]).to eq("4/4")
+      expect(attempt[:song][:each_beat]).to eq("1/4")
+      expect(attempt[:song][:notes]).to eq(["A^1 | ", "D1", "F1", "D1", "A^2"])
     end
   end
 end

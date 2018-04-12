@@ -40,7 +40,8 @@ $(document).ready(function(){
         data: response,
         success: function(data) {
           var notes = data.song.notes.join(' ');
-          var exercises = document.getElementById('exercises');
+          var canvas = document.querySelectorAll('main > div:last-child > canvas');
+          debugger
           exercises.lastElementChild.append('notes ' + notes + ' =||');
         }
       }));

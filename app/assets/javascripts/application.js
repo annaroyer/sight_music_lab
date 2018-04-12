@@ -13,26 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require_tree .
 //= require abcjs-rails
-//= require_tree .
 
-var abc = "T: Cooley's\n" +
-			"M: 4/4\n" +
-			"L: 1/8\n" +
-			"K: Emin\n" +
-			"|:d2|EBBA B2 EB|B2 AB dBAG|FDAD BDAD|FDAD dAFD|\n" +
-			"EBBA B2 EB|B2 AB defg|afe^c dBAF|DEFD E2:|\n" +
-			"|:gf|eB B2 efge|eB B2 gedB|A2 FA DAFA|A2 FA defg|\n" +
-			"eB B2 eBgB|eB B2 defg|afe^c dBAF|DEFD E2:|";
-
-ABCJS.renderAbc("paper", abc);
-// ABCJS.renderAbc(div, abcString, parserParams, printerParams, renderParams);
-// ABCJS.renderMidi(div, abcString, parserParams, midiParams, renderParams);
-//= require vexflow-min
-//= require tabdiv-debug
-//= require_tree .
-
-$(document).ready(function(){
   var recorder = document.getElementById('recorder');
   var player = document.getElementById('player');
 
@@ -54,11 +37,19 @@ $(document).ready(function(){
         url: 'api/v1/attempts',
         data: response,
         success: function(data) {
-          var notes = data.song.notes.join(' ');
-          var canvas = document.querySelectorAll('main > div:last-child > canvas');
-          debugger
-          exercises.lastElementChild.append('notes ' + notes + ' =||');
+          var song = data.song;
+          var new_attempt = `M: ${song.tse}\n` +
+                            `L: ${song.each_beat}\n` +
+                            `K: ${song.key}\n` +
+                            `${song.notes.join(' ')}` + '||';
+          var attemptScore = $('.exercises').append($('<div>', {class: 'paper', id: 'attempt-score'}));
+          ABCJS.renderAbc('attempt-score', new_attempt);
         }
       }));
     })
-  });
+
+    var abc = "M: 4/4\n" +
+              "L: 1/4\n" +
+              "K: A^ Maj\n" +
+              "A^1 |  D1 F1 D1 A^2||";
+    ABCJS.renderAbc("exercise-score", abc);

@@ -21,6 +21,7 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'active_model_serializers'
 gem 'abcjs-rails'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
@@ -32,6 +33,7 @@ group :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
+  gem 'simplecov'
 end
 
 group :development do

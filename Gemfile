@@ -18,6 +18,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'jquery-rails'
 gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'active_model_serializers'
 gem 'abcjs-rails'
 
 group :development, :test do

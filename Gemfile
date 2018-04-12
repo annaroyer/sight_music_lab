@@ -18,6 +18,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'jquery-rails'
 gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'abcjs-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

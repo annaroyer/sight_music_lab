@@ -1,11 +1,11 @@
-#exercises {
+.exercises {
   padding: 5% 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 
-  #paper {
+  .paper {
     background-color: #F0EFF0;
     margin: 50px;
     padding: 30px;

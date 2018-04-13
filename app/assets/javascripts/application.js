@@ -53,3 +53,28 @@
               "K: A^ Maj\n" +
               "A^1 |  D1 F1 D1 A^2||";
     ABCJS.renderAbc("exercise-score", abc);
+
+
+navigator.mediaDevices.getUserMedia({ audio: true })
+  .then(function(stream){
+    var mediaRecorder = new MediaRecorder(stream);
+    debugger
+});
+
+$('#start').on('click', function(){
+  mediaRecorder.start();
+});
+
+var sound_buffers = [];
+mediaRecorder.ondataavailable = function(e) {
+  sound_buffers.push(e.data)
+}
+
+$('#stop').on('click', function(){
+  mediaRecorder.stop();
+});
+
+mediaRecorder.onstop = function(e) {
+  var blob = new Blob(sound_buffers, { 'type' : 'audio/ogg; codecs=opus' });
+  sound_buffers = [];
+}

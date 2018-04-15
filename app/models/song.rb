@@ -8,6 +8,11 @@ class Song
     @raw_notes = attrs[:notes]
   end
 
+  def self.from_upload(file)
+    raw_song = SonicApiService.post_file(file)
+    new(raw_song)
+  end
+
   def notes
     @notes ||= raw_notes.map do |raw_note|
       note = Note.new(raw_note, beat_duration)

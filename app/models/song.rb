@@ -24,10 +24,6 @@ class Song
     @beats_per_measure ||= tse.split('/').first.to_i
   end
 
-  def each_beat
-    '1/' + tse.split('/').last
-  end
-
   private
     attr_reader :raw_notes, :bpm
 

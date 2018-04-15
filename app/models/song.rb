@@ -5,7 +5,7 @@ class Song
     @key = attrs[:key].gsub('#', '^')
     @tse = tse
     @bpm = bpm
-    @raw_notes = attrs[:notes].values
+    @raw_notes = attrs[:notes]
   end
 
   def notes

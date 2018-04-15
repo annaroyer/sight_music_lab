@@ -24,9 +24,9 @@
   });
 
     var originalExercise = "M: 4/4\n" +
-              "L: 1/4\n" +
-              "K: A^ Maj\n" +
-              "A^1 |  D1 F1 D1 A^2||";
+                           "L: 1/4\n" +
+                           "K: A^ Maj\n" +
+                           "A^1 |  D1 F1 D1 A^2||";
     ABCJS.renderAbc("exercise-score", originalExercise);
 
 
@@ -70,5 +70,5 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: false })
       var attemptScore = $('.exercises').append($('<div>', {class: 'paper', id: 'attempt-score'}));
       ABCJS.renderAbc('attempt-score', newAttempt);
     })
-    .catch(error => console.error('Error:', error))
+    .catch((error) => console.error('Error:', error))
   }

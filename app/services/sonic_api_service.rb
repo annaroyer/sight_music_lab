@@ -21,7 +21,7 @@ class SonicApiService
 
     def self.upload(file)
       Faraday::UploadIO.new(
-       file.tempfile.path,
+       file.path,
        file.content_type,
        file.original_filename
       )

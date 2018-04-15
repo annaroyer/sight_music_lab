@@ -18,7 +18,7 @@ class SongSerializer < ActiveModel::Serializer
   end
 
   def each_beat
-    object.each_beat
+    '1/' + object.tse.split('/').last
   end
 
   def tse

@@ -7,6 +7,7 @@ class Api::V1::AttemptsController < ApiController
   private
 
     def attempt_params
+      binding.pry
       {song: Song.from_upload(params[:input_file])}
     end
 end

@@ -55,7 +55,7 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: false })
   const getSheetMusic = function(file){
     player.src = URL.createObjectURL(file);
     var formData = new FormData();
-    formData.append('input_file', file);
+    formData.append('audio', file);
 
     fetch('/api/v1/attempts', {
       method: 'POST',

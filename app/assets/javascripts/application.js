@@ -47,11 +47,7 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: false })
       const blob = new Blob(sound_buffers, { type: 'audio/webm' });
       var file = new File(sound_buffers, 'input.wav', { type: 'audio/wav' });
       sound_buffers = [];
-      player.src = URL.createObjectURL(blob);
-      var xhr = new XMLHttpRequest();
-      var formData = new FormData();
-      formData.append('input_file', file);
-
+      getSheetMusic(blob);
     }
   });
 

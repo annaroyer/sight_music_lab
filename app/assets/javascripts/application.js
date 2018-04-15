@@ -33,6 +33,7 @@
 navigator.mediaDevices.getUserMedia({ audio: true, video: false })
   .then(function(stream){
     var mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.audioChannels = 1;
     $('#start').on('click', function(){
       mediaRecorder.start();
     });
@@ -44,10 +45,10 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: false })
       mediaRecorder.stop();
     });
     mediaRecorder.onstop = function(e) {
-      const blob = new Blob(sound_buffers, { type: 'audio/webm' });
+      const blob = new Blob(sound_buffers, { type: 'audio/wav' });
       var file = new File(sound_buffers, 'input.wav', { type: 'audio/wav' });
       sound_buffers = [];
-      getSheetMusic(blob);
+      getSheetMusic(file);
     }
   });
 

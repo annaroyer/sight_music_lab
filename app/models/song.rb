@@ -5,7 +5,12 @@ class Song
     @key = attrs[:key].gsub('#', '^')
     @tse = tse
     @bpm = bpm
-    @raw_notes = attrs[:notes].values
+    @raw_notes = attrs[:notes]
+  end
+
+  def self.from_upload(file)
+    raw_song = SonicApiService.post_file(file)
+    new(raw_song)
   end
 
   def notes
@@ -17,10 +22,6 @@ class Song
 
   def beats_per_measure
     @beats_per_measure ||= tse.split('/').first.to_i
-  end
-
-  def each_beat
-    '1/' + tse.split('/').last
   end
 
   private

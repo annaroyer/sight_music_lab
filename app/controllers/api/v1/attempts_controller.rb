@@ -1,11 +1,13 @@
 class Api::V1::AttemptsController < ApiController
   def create
-    attempt = current_user.attempts.create(song: song)
-    render json: attempt
+    current_user = User.first
+    render json: current_user.attempts.create(attempt_params)
   end
 
   private
-    def song
-      Song.new(params[:melody_result])
+
+    def attempt_params
+      binding.pry
+      {song: Song.from_upload(params[:input_file])}
     end
 end

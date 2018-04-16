@@ -32,8 +32,7 @@
 
 navigator.mediaDevices.getUserMedia({ audio: true, video: false })
   .then(function(stream){
-    var mediaRecorder = new MediaRecorder(stream);
-    mediaRecorder.audioChannels = 1;
+    var mediaRecorder = new MediaRecorder(stream, {mimeType : "audio/webm"});
     $('#start').on('click', function(){
       mediaRecorder.start();
     });
@@ -45,17 +44,17 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: false })
       mediaRecorder.stop();
     });
     mediaRecorder.onstop = function(e) {
-      const blob = new Blob(sound_buffers, { type: 'audio/wav' });
-      var file = new File(sound_buffers, 'input.wav', { type: 'audio/wav' });
+      const blob = new Blob(sound_buffers, { type: 'audio/ogg' });
+      var file = new File(sound_buffers, 'input.webm', { type: 'audio/webm' });
       sound_buffers = [];
-      getSheetMusic(file);
+      getSheetMusic(blob);
     }
   });
 
   const getSheetMusic = function(file){
     player.src = URL.createObjectURL(file);
     var formData = new FormData();
-    formData.append('input_file', file);
+    formData.append('attempt[audio]', file);
 
     fetch('/api/v1/attempts', {
       method: 'POST',

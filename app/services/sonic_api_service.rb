@@ -10,22 +10,10 @@ class SonicApiService
   private
 
     def self.conn
-      Faraday.new('https://api.sonicapi.com', params: params) do |f|
-        f.request :multipart
-        f.request :url_encoded
-        f.adapter Faraday.default_adapter
-      end
+      Faraday.new('https://api.sonicapi.com', params: params)
     end
 
     def self.params
       {access_id: ENV['SONIC_API_KEY'], format: 'json'}
-    end
-
-    def self.upload(file)
-      Faraday::UploadIO.new(
-       file.path,
-       file.content_type,
-       file.original_filename
-      )
     end
 end

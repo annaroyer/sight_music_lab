@@ -7,5 +7,14 @@ class Attempt < ApplicationRecord
 
   attr_accessor :audio_file_name
   has_attached_file :audio
-  do_not_validate_attachment_file_type :audio
+  do_not_validate_attachment_file_type :audio,
+  storage: :s3,
+  s3_credentials: {
+    bucket: ENV.fetch('S3_BUCKET_NAME'),
+    access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+    secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+    s3_region: ENV.fetch('AWS_REGION')
+  },
+  path: '/:class/:attachment/:id_partition/:style/:filename',
+  url: ':s3_domain_url'
 end

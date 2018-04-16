@@ -7,11 +7,6 @@ class Api::V1::AttemptsController < ApiController
   private
 
     def attempt_params
-      binding.pry
-      params.permit(:audio)
-    end
-
-    def xattempt_params
-      { song: Song.from_upload(params[:input_file]) }
+      params.require(:attempt).permit(:audio)
     end
 end

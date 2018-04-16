@@ -1,7 +1,9 @@
 class SonicApiService
 
-  def self.post_file(file)
-    response = conn.post('/analyze/melody', {input_file: upload(file)})
+  def self.post_file(url)
+    response = conn.post('/analyze/melody') do |f|
+      f.params['input_file'] = url
+    end
     JSON.parse(response.body, symbolize_names: true)[:melody_result]
   end
 

@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'active_model_serializers'
 gem 'abcjs-rails'
+gem 'aws-sdk', '~> 2.3'
 
 
 group :development, :test do

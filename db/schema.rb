@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20180415220025) do
 
   create_table "attempts", force: :cascade do |t|
     t.bigint "user_id"
-    t.text "song"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "audio_file_name"

@@ -9,6 +9,7 @@
   <body>
     <%= render partial: "layouts/#{current_user.role}_navbar" %>
     <%= yield %>
+    <%= javascript_include_tag 'https://unpkg.com/mic-recorder-to-mp3@2.2.0/dist/index.js' %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>

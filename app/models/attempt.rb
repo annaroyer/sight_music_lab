@@ -11,7 +11,6 @@ class Attempt < ApplicationRecord
   storage: :s3,
   s3_region: ENV.fetch('AWS_REGION'),
   s3_host_name: 's3-us-west-1.amazonaws.com',
-  url: ':s3_domain_url',
   path: '/:class/:attachment/:id_partition/:style/:filename',
   s3_credentials: {
     bucket: ENV.fetch('S3_BUCKET_NAME'),

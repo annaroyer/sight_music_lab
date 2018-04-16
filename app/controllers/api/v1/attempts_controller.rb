@@ -5,7 +5,7 @@ class Api::V1::AttemptsController < ApiController
   end
 
   private
-  
+
     def attempt_params
       {song: Song.from_upload(params[:attempt][:audio])}
     end

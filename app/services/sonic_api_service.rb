@@ -2,7 +2,7 @@ class SonicApiService
 
   def self.post_file(url)
     response = conn.post('/analyze/melody') do |f|
-      f.params['input_file'] = "https:#{url}"
+      f.params['input_file'] = url
     end
     JSON.parse(response.body, symbolize_names: true)[:melody_result]
   end

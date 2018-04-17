@@ -33,7 +33,18 @@ describe Song do
   context 'class methods' do
     describe '.from_upload' do
       it 'returns a song object from a url to an audio file' do
+        url = "https://sight-music-lab.s3-us-west-1.amazonaws.com/attempts/audios/000/000/020/original/recorded.mp3"
 
+        melody_result = File.open('./spec/fixtures/melody.json')
+
+        stub_request(:post, "https://api.sonicapi.com/analyze/melody?access_id=#{ENV['SONIC_API_KEY']}&format=json&input_file=#{url}")
+          .to_return(status: 200, body: melody_result, headers: {})
+
+
+        song = Song.from_upload(url)
+
+        expect(song.class).to eq(Song)
+        expect(song.beats_per_measure).to eq(4)
       end
     end
   end

@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sonicapi.com/analyze/melody?access_id=67a84cd6-5d82-4f3b-bf96-752496ab2670&format=json&input_file=https://sight-music-lab.s3-us-west-1.amazonaws.com/attempts/audios/000/000/020/original/recorded.mp3
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.9.15
+      Date:
+      - Tue, 17 Apr 2018 05:07:21 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1723'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      X-Sonicapi-Request-Id:
+      - 417a5ac7-af77-4af6-8e95-181eea0cd60e
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Remaining-Traffic-Gb:
+      - '2.3193'
+      Location:
+      - "/file/download?file_id=3ee0a3d9-4fdf-4a0f-8764-9d867050e36b"
+      X-Sonicapi-File-Id:
+      - 3ee0a3d9-4fdf-4a0f-8764-9d867050e36b
+    body:
+      encoding: UTF-8
+      string: '{"status":{"code":200},"melody_result":{"key":"A# Maj","key_index":10,"tuning_frequency":443.8544006347656,"notes":[{"midi_pitch":58.236053466796875,"onset_time":1.3429251700680271,"duration":0.2626303854875283,"volume":0.6930711269378662},{"midi_pitch":61.98783493041992,"onset_time":1.6096371882086167,"duration":0.2950340136054422,"volume":0.07236500084400177},{"midi_pitch":65.2293472290039,"onset_time":1.9383673469387754,"duration":0.42698412698412697,"volume":0.10282237827777863},{"midi_pitch":65.2005386352539,"onset_time":2.579433106575964,"duration":0.2645351473922902,"volume":0.1307895928621292},{"midi_pitch":65.03824615478516,"onset_time":2.918548752834467,"duration":0.27165532879818594,"volume":0.14068517088890076},{"midi_pitch":65.1620864868164,"onset_time":3.280498866213152,"duration":0.41793650793650794,"volume":0.13173948228359222},{"midi_pitch":65.16051483154297,"onset_time":3.928049886621315,"duration":0.26068027210884354,"volume":0.24553169310092926},{"midi_pitch":62.165992736816406,"onset_time":4.19172335600907,"duration":0.3153061224489796,"volume":0.12475565075874329},{"midi_pitch":58.30320358276367,"onset_time":4.510634920634921,"duration":0.4518140589569161,"volume":0.2920590341091156},{"midi_pitch":60.111297607421875,"onset_time":5.0810204081632655,"duration":0.09419501133786848,"volume":0.048664551228284836},{"midi_pitch":58.11053466796875,"onset_time":5.207052154195011,"duration":0.20546485260770975,"volume":0.1431708037853241},{"midi_pitch":58.105918884277344,"onset_time":5.515668934240363,"duration":0.2194331065759637,"volume":0.1565205305814743},{"midi_pitch":57.97328186035156,"onset_time":5.860045351473923,"duration":0.2746485260770975,"volume":0.19709518551826477}]}}'
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 05:07:21 GMT
+recorded_with: VCR 4.0.0

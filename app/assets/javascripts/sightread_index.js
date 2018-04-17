@@ -1,10 +1,8 @@
 const exercise = $('.paper').first();
 const exerciseId = exercise.attr('id');
+const userEmail = $('.navbar').attr('id');
 
-const recorder = new MicRecorder({
-  bitRate: 128
-});
-
+const recorder = new MicRecorder({bitRate: 128});
 const player = $('#player');
 
 const getSheetMusic = function(song, label){
@@ -20,8 +18,9 @@ const sendAttempt = function(file){
   player.src = URL.createObjectURL(file);
   let formData = new FormData();
   formData.append('attempt[audio]', file);
+  formData.append('attempt[user_email]', userEmail);
 
-  fetch('/api/v1/attempts', {
+  fetch(`/api/v1/exercises/${exerciseId}/attempts`, {
     method: 'POST',
     body: formData
   })

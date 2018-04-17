@@ -21,7 +21,7 @@ const getSheetMusic = function(song, label){
 
 const sendAttempt = function(file){
   player.src = URL.createObjectURL(file);
-  var formData = new FormData();
+  let formData = new FormData();
   formData.append('attempt[audio]', file);
 
   fetch('/api/v1/attempts', {
@@ -35,7 +35,7 @@ const sendAttempt = function(file){
 
 const stopRecording = function(){
   recorder.stop().getMp3().then(([buffer, blob]) => {
-    var file = new File(buffer, 'input.mp3', {
+    let file = new File(buffer, 'input.mp3', {
       type: blob.type,
       lastModified: Date.now()
     });
@@ -65,7 +65,7 @@ const startRecording = function(){
 // }
 
 $('#upload').on('change', function(e) {
-  var file = e.target.files[0];
+  let file = e.target.files[0];
   sendAttempt(file);
 });
 

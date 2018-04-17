@@ -4,8 +4,8 @@ describe Song do
   subject { Song.new(melody_analysis) }
 
   context 'attributes' do
-    it 'has a key' do
-      expect(subject.key).to eq("A# Maj")
+    it 'has a key in abc notation' do
+      expect(subject.key).to eq("A^ Maj")
     end
 
     it 'has a tse' do
@@ -33,7 +33,7 @@ describe Song do
   context 'class methods' do
     describe '.from_upload' do
       it 'returns a song object from a url to an audio file' do
-        
+
       end
     end
   end

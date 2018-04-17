@@ -10,9 +10,7 @@ class Note
   end
 
   def num_beats
-    beats ||= (beat_duration / duration)
-    return beats.rationalize.to_s if beats % 1 >= 0.25
-    beats.floor
+    (duration / beat_duration).round
   end
 
   def letter

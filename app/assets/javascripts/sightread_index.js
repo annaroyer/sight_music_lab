@@ -1,7 +1,7 @@
 var originalExercise = "M: 4/4\n" +
                        "L: 1/4\n" +
                        "K: A^ Maj\n" +
-                       "A^1 |  D1 F1 D1 A^2||";
+                       "A^1 |  D1 F1 D1 A^2|]";
 ABCJS.renderAbc("exercise-score", originalExercise);
 
 const recorder = new MicRecorder({
@@ -50,7 +50,7 @@ const getSheetMusic = function(file){
     const newAttempt = `M: ${song.tse}\n` +
                        `L: ${song.each_beat}\n` +
                        `K: ${song.key}\n` +
-                       `${song.notes.join(' ')}` + '||';
+                       `${song.notes.join(' ')}` + '|]';
     const attemptScore = $('.exercises').append($('<div>', {class: 'paper', id: 'attempt-score'}));
     ABCJS.renderAbc('attempt-score', newAttempt);
   })

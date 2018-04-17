@@ -6,16 +6,6 @@ describe 'Attempts API' do
       user = create(:user)
       allow_any_instance_of(ApiController).to receive(:current_user).and_return(user)
 
-      melody_analysis = File.open('./spec/fixtures/melody.json')
-      stub_request(:post, "https://api.sonicapi.com/analyze/melody?access_id=67a84cd6-5d82-4f3b-bf96-752496ab2670&format=json&input_file=/system/attempts/audios//original/recorded.mp3?1523930091").
-         with(  headers: {
-       	  'Accept'=>'*/*',
-       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       	  'Content-Length'=>'0',
-       	  'User-Agent'=>'Faraday v0.12.2'
-           }).
-         to_return(status: 200, body: melody_analysis, headers: {})
-
       song = Song.new({key: "A# Maj", key_index: "10", tuning_frequency: "439.9074401855469",
         notes: [
           {midi_pitch: "55.389259338378906", onset_time: "0.005328798185941043", duration: "0.3031065759637188", volume: "0.000553264981135726"},
@@ -36,7 +26,7 @@ describe 'Attempts API' do
       expect(attempt[:song][:key]).to eq("A^ Maj")
       expect(attempt[:song][:tse]).to eq("4/4")
       expect(attempt[:song][:each_beat]).to eq("1/4")
-      expect(attempt[:song][:notes]).to eq([["z1", "A^,1", "D1", "F1", "D1", "A^,2"]])
+      expect(attempt[:song][:notes]).to eq(["z1", "A^,1", "D1", "F1", "D1", "A^,2"])
     end
   end
 end

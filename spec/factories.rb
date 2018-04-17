@@ -14,8 +14,8 @@ FactoryBot.define do
   end
 
   factory :exercise do
-    notes "A^1 |  D1 F1 D1 A^2|]"
-    key 'A^ maj'
+    notes "A^1 | D1 F1 D1 A^2|]"
+    key 'A^ Maj'
     tse '4/4'
   end
 end

@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe 'Attempts API' do
-  context 'post api/v1/attempts' do
+  context 'post api/v1/exercises/:id/attempts' do
     it 'returns notational representation of the melodic analysis' do
       user = create(:user)
+      exercise = create(:exercise)
       allow_any_instance_of(ApiController).to receive(:current_user).and_return(user)
 
       song = Song.new({key: "A# Maj", key_index: "10", tuning_frequency: "439.9074401855469",
@@ -19,7 +20,7 @@ describe 'Attempts API' do
 
       allow_any_instance_of(Attempt).to receive(:song).and_return(song)
 
-      post '/api/v1/attempts', params:  { 'attempt[audio]' => Rack::Test::UploadedFile.new("./spec/fixtures/recorded.mp3", 'audio/mp3') }
+      post '/api/v1/exercises/1/attempts', params:  { 'attempt[audio]' => Rack::Test::UploadedFile.new("./spec/fixtures/recorded.mp3", 'audio/mp3') }
 
       attempt = JSON.parse(response.body, symbolize_names: true)
 

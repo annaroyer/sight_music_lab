@@ -20,7 +20,7 @@ class Song
   end
 
   def beats_per_measure
-    @beats_per_measure ||= tse.split('/').first.to_i
+    @beats_per_measure ||= tse.to_i
   end
 
   private
@@ -28,5 +28,9 @@ class Song
 
     def beat_duration
       @beat_duration ||= 60.0 / bpm.to_f
+    end
+
+    def measure_duration
+      beat_duration * beats_per_measure
     end
 end

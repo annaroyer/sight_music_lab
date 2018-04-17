@@ -1,15 +1,15 @@
 class Api::V1::Exercises::AttemptsController < ApiController
   def create
-    render json: exercise.attempts.create(attempt_params)
+    render json: current_user.attempts.create(attempt_params)
   end
 
   private
 
     def attempt_params
-      params.require(:attempt).permit(:audio, :user_email)
+      params.permit(:exercise_id, :audio)
     end
 
-    def exercise
-      Exercise.find(params[:exercise_id])
+    def current_user
+      User.find_by(email: params[:user_email])
     end
 end

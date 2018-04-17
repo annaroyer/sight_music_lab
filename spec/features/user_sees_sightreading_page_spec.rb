@@ -27,7 +27,7 @@ describe 'As a user' do
   end
 
   scenario 'I see a different sightreading example' do
-    exercise = Exercise.create(key: 'C min', tse: '3/4', notes: "C1 E2 C1 | c2 b1 c1|]")
+    exercise = create(:exercise, key: 'C min', tse: '3/4', notes: "C1 E2 C1 | c2 b1 c1|]")
 
     visit '/sight-read'
 

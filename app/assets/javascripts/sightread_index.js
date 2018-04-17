@@ -10,32 +10,16 @@ const recorder = new MicRecorder({
 
 const player = $('#player');
 
-$('#upload').on('change', function(e) {
-  var file = e.target.files[0];
-  getSheetMusic(file);
-});
-
-$('#start').on('click', startRecording);
-
-function startRecording(){
-  recorder.start().then(() => {
-    $('#start').off();
-    $('#stop').on('click', stopRecording);
-  })
+const getSheetMusic = function(song, label){
+  var newAttempt = `M: ${song.tse}\n` +
+                   `L: ${song.each_beat}\n` +
+                   `K: ${song.key}\n` +
+                   `${song.notes.join(' ')}` + '|]';
+  var attemptScore = $('.exercises').append($('<div>', {class: 'paper', id: label}));
+  ABCJS.renderAbc(label, newAttempt);
 }
 
-function stopRecording(){
-  recorder.stop().getMp3().then(([buffer, blob]) => {
-    var file = new File(buffer, 'input.mp3', {
-      type: blob.type,
-      lastModified: Date.now()
-    });
-    $('#stop').off();
-    getSheetMusic(file);
-  })
-}
-
-const getSheetMusic = function(file){
+const sendAttempt = function(file){
   player.src = URL.createObjectURL(file);
   var formData = new FormData();
   formData.append('attempt[audio]', file);
@@ -45,14 +29,44 @@ const getSheetMusic = function(file){
     body: formData
   })
   .then(response => response.json())
-  .then(function(response){
-    const song = response.song;
-    const newAttempt = `M: ${song.tse}\n` +
-                       `L: ${song.each_beat}\n` +
-                       `K: ${song.key}\n` +
-                       `${song.notes.join(' ')}` + '|]';
-    const attemptScore = $('.exercises').append($('<div>', {class: 'paper', id: 'attempt-score'}));
-    ABCJS.renderAbc('attempt-score', newAttempt);
-  })
+  .then(response => getSheetMusic(response.song, 'attempt-song'))
   .catch((error) => console.error('Error:', error))
 }
+
+const stopRecording = function(){
+  recorder.stop().getMp3().then(([buffer, blob]) => {
+    var file = new File(buffer, 'input.mp3', {
+      type: blob.type,
+      lastModified: Date.now()
+    });
+    $('#stop').off();
+    sendAttempt(file);
+  })
+}
+
+const startRecording = function(){
+  recorder.start().then(() => {
+    $('#start').off();
+    $('#stop').on('click', stopRecording);
+  })
+}
+
+// const getRandomScore = function(){
+//   fetch('/api/v1/exercises/song/random', {
+//     method: 'GET'
+//   })
+//   .then(response => response.json())
+//   .then(response => getSheetMusic(response.song))
+//   .catch((error) => console.error('Error:', error))
+// }
+
+// $(document).ready(){
+//   getRandomScore();
+// }
+
+$('#upload').on('change', function(e) {
+  var file = e.target.files[0];
+  sendAttempt(file);
+});
+
+$('#start').on('click', startRecording);

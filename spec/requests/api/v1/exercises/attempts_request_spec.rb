@@ -19,8 +19,9 @@ describe 'Attempts API' do
       })
 
       allow_any_instance_of(Attempt).to receive(:song).and_return(song)
+      audio = Rack::Test::UploadedFile.new("./spec/fixtures/recorded.mp3", 'audio/mp3')
 
-      post '/api/v1/exercises/1/attempts', params:  { 'attempt[audio]' => Rack::Test::UploadedFile.new("./spec/fixtures/recorded.mp3", 'audio/mp3') }
+      post '/api/v1/exercises/1/attempts', params:  { 'audio' => audio, 'user_email' => user.email }
 
       attempt = JSON.parse(response.body, symbolize_names: true)
 

@@ -5,7 +5,10 @@
   <button id="start">Record</button>
   <button id="stop">Stop</button>
 
-  <div class="paper" id="exercise-score">
+  <div class="paper" id=<%= @exercise.id %>>
+    M: <%= @exercise.tse %>
+    L: 1/4
+    K: <%= @exercise.key %>
+    <%= @exercise.notes %>
   </div>
-
 </main>

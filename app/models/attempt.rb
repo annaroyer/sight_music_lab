@@ -1,5 +1,6 @@
 class Attempt < ApplicationRecord
   belongs_to :user
+  belongs_to :exercise
 
   attr_accessor :audio_file_name
   has_attached_file :audio

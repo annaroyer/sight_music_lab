@@ -1,10 +1,10 @@
-<nav class="navbar">
+<nav class="navbar" id=<%= current_user.email %>>
   <div class="nav-left">
     <%= image_tag 'treble-clef.svg', class: 'brand-img' %>
     <%= link_to 'Sight Music Lab', root_path, class: 'brand-link' %>
   </div>
   <div class="nav-center">
-    <%= link_to 'Sight Read', sight_read_path, class: 'nav-item' %>    
+    <%= link_to 'Sight Read', sight_read_path, class: 'nav-item' %>
   </div>
   <div class="nav-right">
     <p class="nav-item">Welcome, <%= current_user.first_name %></p>

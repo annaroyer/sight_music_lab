@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :attempts, only: [:create]
+      namespace :exercises, path: 'exercises/:exercise_id' do
+        resources :attempts, only: [:create]
+      end
     end
   end
 end

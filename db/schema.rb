@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416044633) do
+ActiveRecord::Schema.define(version: 20180417205651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,17 @@ ActiveRecord::Schema.define(version: 20180416044633) do
     t.string "audio_content_type"
     t.integer "audio_file_size"
     t.datetime "audio_updated_at"
+    t.bigint "exercise_id"
+    t.index ["exercise_id"], name: "index_attempts_on_exercise_id"
     t.index ["user_id"], name: "index_attempts_on_user_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.text "notes"
+    t.string "key"
+    t.string "tse"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,5 +49,6 @@ ActiveRecord::Schema.define(version: 20180416044633) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  add_foreign_key "attempts", "exercises"
   add_foreign_key "attempts", "users"
 end

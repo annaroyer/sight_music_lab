@@ -1,4 +1,5 @@
-class Api::V1::AttemptsController < ApiController
+class Api::V1::Exercises::AttemptsController < ApiController
+
   def create
     render json: current_user.attempts.create(attempt_params)
   end
@@ -6,6 +7,6 @@ class Api::V1::AttemptsController < ApiController
   private
 
     def attempt_params
-      params.require(:attempt).permit(:audio)
+      params.permit(:exercise_id, :audio)
     end
 end

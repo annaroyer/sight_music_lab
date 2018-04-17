@@ -1,8 +1,5 @@
-var originalExercise = "M: 4/4\n" +
-                       "L: 1/4\n" +
-                       "K: A^ Maj\n" +
-                       "A^1 |  D1 F1 D1 A^2|]";
-ABCJS.renderAbc("exercise-score", originalExercise);
+const exercise = $('.paper').first();
+const exerciseId = exercise.attr('id');
 
 const recorder = new MicRecorder({
   bitRate: 128
@@ -51,18 +48,9 @@ const startRecording = function(){
   })
 }
 
-// const getRandomScore = function(){
-//   fetch('/api/v1/exercises/song/random', {
-//     method: 'GET'
-//   })
-//   .then(response => response.json())
-//   .then(response => getSheetMusic(response.song))
-//   .catch((error) => console.error('Error:', error))
-// }
-
-// $(document).ready(){
-//   getRandomScore();
-// }
+$(document).ready(function(){
+  ABCJS.renderAbc(exerciseId, exercise.html());
+})
 
 $('#upload').on('change', function(e) {
   let file = e.target.files[0];

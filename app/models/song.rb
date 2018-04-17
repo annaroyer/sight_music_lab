@@ -15,9 +15,8 @@ class Song
 
   def notes
     @notes ||= raw_notes.map do |raw_note|
-      note = Note.new(raw_note, beat_duration)
-      note if note.audible?
-    end.compact
+      Note.new(raw_note, beat_duration)
+    end
   end
 
   def beats_per_measure

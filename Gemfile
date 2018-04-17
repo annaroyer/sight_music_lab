@@ -35,6 +35,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'simplecov'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

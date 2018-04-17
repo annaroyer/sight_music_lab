@@ -4,12 +4,7 @@ class SongSerializer < ActiveModel::Serializer
 
   def notes(beats=0)
     object.notes.map do |note|
-      beats += note.num_beats
-      if beats % object.beats_per_measure == 1
-        "#{note.name} | "
-      else
-        note.name
-      end
+      "#{note.letter}#{note.num_beats}"
     end
   end
 

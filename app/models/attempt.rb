@@ -1,10 +1,6 @@
 class Attempt < ApplicationRecord
   belongs_to :user
 
-  def song
-    Song.from_upload(audio.url)
-  end
-
   attr_accessor :audio_file_name
   has_attached_file :audio
   do_not_validate_attachment_file_type :audio,
@@ -17,4 +13,8 @@ class Attempt < ApplicationRecord
     access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
     secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY')
   }
+
+  def song
+    Song.from_upload(audio.url)
+  end
 end

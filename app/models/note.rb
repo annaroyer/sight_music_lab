@@ -9,23 +9,23 @@ class Note
     @volume = attrs[:volume].to_f
   end
 
-  def name
-    "#{letter_note}#{num_beats}"
-  end
-
   def num_beats
-    (duration / beat_duration).round
+    beats ||= (beat_duration / duration)
+    return beats.rationalize.to_s if beats % 1 >= 0.25
+    beats.floor
   end
 
-  def audible?
-    volume > 0.001
+  def letter
+    return 'z' if silent?
+    letter = letter_notes[midi_pitch.round % 12]
+    abc_format(letter)
   end
 
   private
     attr_reader :midi_pitch, :duration, :beat_duration, :volume
 
-    def letter_note
-      letter_notes[midi_pitch.round % 12]
+    def silent?
+      volume < 0.001
     end
 
     def octave
@@ -34,5 +34,13 @@ class Note
 
     def letter_notes
       ['C', 'C^', 'D', 'D^', 'E', 'F', 'F^', 'G', 'G^', 'A', 'A^', 'B']
+    end
+
+    def abc_format(letter)
+      if octave <= 4
+        letter + (Array.new(4 - octave, ',').join)
+      else
+        letter.downcase + (Array.new(octave - 5, "'").join)
+      end
     end
 end

@@ -12,4 +12,10 @@ FactoryBot.define do
     user
     audio { File.new("#{Rails.root}/spec/fixtures/recorded.mp3", 'w') }
   end
+
+  factory :exercise do
+    notes "A^1 |  D1 F1 D1 A^2|]"
+    key 'A^ maj'
+    tse '4/4'
+  end
 end

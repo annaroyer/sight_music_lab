@@ -17,8 +17,8 @@ const getSheetMusic = function(song, label){
 const sendAttempt = function(file){
   player.src = URL.createObjectURL(file);
   let formData = new FormData();
-  formData.append('attempt[audio]', file);
-  formData.append('attempt[user_email]', userEmail);
+  formData.append('audio', file);
+  formData.append('user_email', userEmail);
 
   fetch(`/api/v1/exercises/${exerciseId}/attempts`, {
     method: 'POST',

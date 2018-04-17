@@ -6,7 +6,7 @@ describe 'Attempts API' do
       user = create(:user)
       allow_any_instance_of(ApiController).to receive(:current_user).and_return(user)
 
-      post '/api/v1/attempts', params:  melody_analysis
+      post '/api/v1/attempts', params:  { 'attempt[audio]' => Rack::Test::UploadedFile.new("./spec/fixtures/recorded.mp3", 'audio/mp3') }
 
       attempt = JSON.parse(response.body, symbolize_names: true)
 

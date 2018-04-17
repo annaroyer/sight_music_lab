@@ -7,6 +7,10 @@ describe Exercise do
     it { should validate_presence_of :key }
   end
 
+  context 'relationships' do
+    it { should have_many :attempts }
+  end
+
   context 'class methods' do
     it 'returns a random exercise' do
       exercise = create(:exercise)

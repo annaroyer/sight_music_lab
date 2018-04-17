@@ -8,10 +8,12 @@ describe 'As a user' do
     end
 
     scenario 'I see a sightreading example' do
+      exercise = create(:exercise)
+
       visit '/sight-read'
 
       expect(page).to have_css('.exercises')
-      expect(page).to have_css('#exercise-score')
+      expect(page).to have_css("##{exercise.id}")
     end
   end
 end

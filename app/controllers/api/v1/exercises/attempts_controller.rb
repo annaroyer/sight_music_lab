@@ -1,6 +1,5 @@
-class Api::V1::Exercises::AttemptsController < ApiController
+class Api::V1::Exercises::AttemptsController < ApplicationController
   def create
-    current_user = User.first
     render json: current_user.attempts.create(attempt_params)
   end
 

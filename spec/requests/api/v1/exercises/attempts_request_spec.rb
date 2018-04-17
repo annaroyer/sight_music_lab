@@ -5,7 +5,7 @@ describe 'Attempts API' do
     it 'returns notational representation of the melodic analysis' do
       user = create(:user)
       exercise = create(:exercise)
-      allow_any_instance_of(ApiController).to receive(:current_user).and_return(user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       song = Song.new({key: "A# Maj", key_index: "10", tuning_frequency: "439.9074401855469",
         notes: [

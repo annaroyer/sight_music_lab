@@ -8,21 +8,38 @@ const recorder = new MicRecorder(
 );
 
 const getSheetMusic = function(song, label){
-  debugger
+  $('#loader-gif').hide();
   var newAttempt = `M: ${song.tse}\n` +
                    `L: ${song.each_beat}\n` +
                    `K: ${song.key}\n` +
                    `${song.notes.join(' ')}` + '|]';
-  var attemptScore = $('.exercises').append($('<div>', {class: 'paper', id: label}));
+  var attemptScore = $('.music').append($('<div>', {class: 'paper', id: label}));
   ABCJS.renderAbc(label, newAttempt);
 }
-//
-// const showScore = function(pitchScore, rhythmScore){
-//
-// }
+
+const showScore = function(pitchScore, rhythmScore){
+  $('.star-heading').show();
+  starImage = $('<img />', {class: 'star'}).attr('src', 'white-star-icon.svg');
+  outlineImage = $('<img />', {class: 'star'}).attr('src', 'outline-star-icon.svg');
+  for(i = 0; i < 5; i++){
+    if (i < pitchScore) {
+      $('#pitchScore').append(starImage);
+    } else {
+      $('#pitchScore').append(outlineImage);
+    }
+    if (i < rhythmScore) {
+      $('#rhythmScore').append(rhythmScore);
+    } else {
+      $('#rhythmScore').append(rhythmScore);
+    }
+  }
+
+  $('.star-scores').append($('<p>', {class: 'score-progress-bar', html: `Pitches: ${pitchScore}/5\n` + `Rhythm: ${rhythmScore}/5\n`}));
+}
 
 const sendAttempt = function(file){
   player.src = URL.createObjectURL(file);
+  $('#loader-gif').show();
   let formData = new FormData();
   formData.append('audio', file);
   formData.append('user_email', userEmail);
@@ -31,9 +48,10 @@ const sendAttempt = function(file){
     method: 'POST',
     body: formData
   })
-  .then(response => response.json())
-  .then(response => function(response){
+  .then((response) => response.json())
+  .then(function(response){
     getSheetMusic(response.song, 'attempt-song');
+    showScore(response.pitch_score, response.rhythm_score);
   })
   .catch((error) => console.error('Error:', error))
 }
@@ -65,6 +83,10 @@ $(document).ready(function(){
 
 $('#upload').on('change', function(e) {
   let file = e.target.files[0];
+  let fileName = e.target.value.split('\\').pop();
+  if(fileName) {
+    $('label').html(fileName);
+  }
   sendAttempt(file);
 });
 

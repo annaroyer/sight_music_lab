@@ -10,14 +10,27 @@
 
 #loader-gif {
   display: none;
-  min-width: 150px;
-  margin: 3%;
+  min-width: 90px;
+  margin-bottom: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 6%;
 }
 
-.star {
+.white-star {
+  background: url('white-star-icon.svg');
   min-width: 8px;
 }
 
-.yellow {
+.outline-star {
+  background: url('outline-star-icon.svg');
+  min-width: 8px;
+}
 
+#next-page {
+  max-width: 70px;
+}
+
+#next-page:hover {
+  background_color: #F7F9FB
 }

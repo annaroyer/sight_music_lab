@@ -15,22 +15,26 @@ class Song
 
   def notes
     @notes ||= raw_notes.map do |raw_note|
-      Note.new(raw_note, beat_duration)
+      Note.new(raw_note, eighth_note_duration)
     end
   end
 
-  def beats_per_measure
-    @beats_per_measure ||= tse.to_i
+  def measure_duration
+    @measure_duration ||= beat_duration * beats_per_measure
   end
 
   private
     attr_reader :raw_notes, :bpm
 
-    def beat_duration
-      @beat_duration ||= 60.0 / bpm.to_f
+    def beats_per_measure
+      @beats_per_measure ||= tse.to_i
     end
 
-    def measure_duration
-      beat_duration * beats_per_measure
+    def eighth_note_duration
+      (tse[-1].to_f / 8) * beat_duration
+    end
+
+    def beat_duration
+      @beat_duration ||= 60.0 / bpm.to_f
     end
 end

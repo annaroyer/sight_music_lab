@@ -1,7 +1,8 @@
 class Api::V1::Exercises::AttemptsController < ApiController
 
   def create
-    render json: AttemptAnalyzer.new(attempt_params).generate
+    attempt = AttemptAnalyzer.new(attempt_params).generate
+    render json: attempt
   end
 
   private

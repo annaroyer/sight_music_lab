@@ -3,7 +3,7 @@ class AttemptAnalyzer
   def initialize(attrs)
     @user     = User.find_by(email: attrs[:user_email])
     @exercise = Exercise.find(attrs[:exercise_id])
-    @upload   = Upload.create(audio: attrs[:audio]).audio.url
+    @upload   = Upload.create(audio: attrs[:audio])
   end
 
   def generate
@@ -19,23 +19,19 @@ class AttemptAnalyzer
   private
     attr_reader :user, :exercise, :upload
 
-    def create_attempt
-
-    end
-
     def song
-      @song ||= Song.from_upload(upload, exercise.tse)
+      @song ||= Song.from_upload(upload.audio.url, exercise.tse)
     end
 
     def rhythm_score
       comparison.count do |notes|
-        notes.first.end_with?(notes.last.num_beats.to_s)
+        notes.first && notes.last && notes.first.end_with?(notes.last.num_beats.to_s)
       end
     end
 
     def pitch_score
       comparison.count do |notes|
-        notes.first.start_with?(notes.last.letter)
+        notes.first && notes.last && notes.first.start_with?(notes.last.letter)
       end
     end
 

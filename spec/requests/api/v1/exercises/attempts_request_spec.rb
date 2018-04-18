@@ -7,7 +7,11 @@ describe 'Attempts API' do
       exercise = create(:exercise)
 
       url = "https://sight-music-lab.s3-us-west-1.amazonaws.com/attempts/audios/000/000/020/original/recorded.mp3"
-      allow_any_instance_of(Api::V1::Exercises::AttemptsController).to receive(:upload).and_return(url)
+      upload = double('upload')
+      audio = double('audio')
+      allow(audio).to receive(:url).and_return(url)
+      allow(upload).to receive(:audio).and_return(audio)
+      allow(Upload).to receive(:create).and_return(upload)
 
       melody_result = File.open('./spec/fixtures/melody.json')
 

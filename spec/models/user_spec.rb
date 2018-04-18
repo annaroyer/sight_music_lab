@@ -26,4 +26,15 @@ describe User, type: :model do
     expect(new_user.last_name).to eq("Royer")
     expect(new_user.oauth_expires_at).to eq(auth[:credentials][:expires_at])
   end
+
+  context 'validations' do
+    it { should validate_presence_of :first_name }
+    it { should validate_presence_of :last_name }
+    it { should validate_presence_of :email }
+    it { should validate_presence_of :token }
+    it { should validate_presence_of :oauth_expires_at }
+    it { should validate_presence_of :uid }
+    it { should validate_uniqueness_of :uid }
+    it { should validate_uniqueness_of :email }
+  end
 end

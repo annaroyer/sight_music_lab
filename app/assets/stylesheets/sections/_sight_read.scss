@@ -18,9 +18,12 @@
 
     .controls {
       display: flex;
-      justify-content: space-around;
-      width: 60%;
+      justify-content: space-between;
       align-items: center;
+
+      .control-item {
+        margin: 0 25px;
+      }
 
       #player {
         // display: none;
@@ -36,19 +39,21 @@
     display: flex;
     flex-shrink: 1;
     justify-content: space-between;
+    padding-top: 20%;
   }
 
   .star_scores {
     #pitch-score, #rhythm-score {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
     }
   }
 }
 
 .stars-heading {
-  // display: none;
   font: {
     family: 'Rufina', serif;
     size: 16px;

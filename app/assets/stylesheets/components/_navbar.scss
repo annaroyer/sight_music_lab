@@ -1,8 +1,9 @@
 $aquamarine: #02C8A7;
 .navbar {
   display: flex;
-  background-color: #F0EFF0;
+  background-color: #F7F9FB;
   font-family: 'Rufina', serif;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
   .nav-right, .nav-left, .nav-center {
     padding: 15px 30px;

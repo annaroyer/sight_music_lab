@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  validates_presence_of :first_name, :last_name, :token, :oauth_expires_at
+  validates :uid, :email, presence: true, uniqueness: true
+
   enum role: %w(user admin)
   has_many :attempts
 

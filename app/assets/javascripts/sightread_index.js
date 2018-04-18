@@ -7,6 +7,11 @@ const recorder = new MicRecorder(
   {bitRate: 128}
 );
 
+const showScore = function(pitchScore, rhythmScore){
+  $('.star-scores').append($(`<p class='stars-heading'>Pitch Score: ${pitchScore} out of 5</p>`));
+  $('.star-scores').append($(`<p class='stars-heading'>Rhythm Score: ${rhythmScore} out of 5</p>`));
+}
+
 const getSheetMusic = function(song, label){
   $('#loader-gif').hide();
   var newAttempt = `M: ${song.tse}\n` +
@@ -15,26 +20,6 @@ const getSheetMusic = function(song, label){
                    `${song.notes.join(' ')}` + '|]';
   var attemptScore = $('.music').append($('<div>', {class: 'paper', id: label}));
   ABCJS.renderAbc(label, newAttempt);
-}
-
-const showScore = function(pitchScore, rhythmScore){
-  $('.star-heading').show();
-  starImage = $('<img />', {class: 'star'}).attr('src', 'white-star-icon.svg');
-  outlineImage = $('<img />', {class: 'star'}).attr('src', 'outline-star-icon.svg');
-  for(i = 0; i < 5; i++){
-    if (i < pitchScore) {
-      $('#pitchScore').append(starImage);
-    } else {
-      $('#pitchScore').append(outlineImage);
-    }
-    if (i < rhythmScore) {
-      $('#rhythmScore').append(rhythmScore);
-    } else {
-      $('#rhythmScore').append(rhythmScore);
-    }
-  }
-
-  $('.star-scores').append($('<p>', {class: 'score-progress-bar', html: `Pitches: ${pitchScore}/5\n` + `Rhythm: ${rhythmScore}/5\n`}));
 }
 
 const sendAttempt = function(file){

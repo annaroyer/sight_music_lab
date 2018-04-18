@@ -43,6 +43,6 @@ class Api::V1::Exercises::AttemptsController < ApiController
     end
 
     def score_weight
-      @score_weight ||= 5 / comparison.count
+      @score_weight ||= 5.0 / comparison.count
     end
 end

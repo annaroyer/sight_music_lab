@@ -1,10 +1,8 @@
 <main class="exercises">
   <section class="star-scores">
     <div id="pitch-score">
-      <p class="stars-heading">Pitches</p>
     </div>
     <div id="rhythm-score">
-      <p class="stars-heading">Rhythm</p>
     </div>
   </section>
 
@@ -17,13 +15,13 @@
     </div>
 
     <div class="controls">
-      <div id="record-border">
+      <div id="record-border" class="control-item">
         <button class="stop"></button>
         <button class="start"></button>
       </div>
 
-      <audio id="player" controls></audio>
-      <input type="file" accept="audio/*" capture id="upload">
+      <audio id="player" class="control-item" controls></audio>
+      <input type="file" accept="audio/*" capture id="upload" class="control-item">
       <label for="upload" class="upload">+ Add a File...</label>
     </div>
 
@@ -31,6 +29,8 @@
   </section>
 
   <section class="next-page">
-    <%= link_to '>>>', sight_read_path %>
+    <%= link_to sight_read_path do %>
+      <%= image_tag 'next-page', id: 'next-page' %>
+    <% end %>
   </section>
 </main>

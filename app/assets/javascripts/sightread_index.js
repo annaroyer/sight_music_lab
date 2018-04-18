@@ -1,21 +1,30 @@
 const exercise = $('.paper').first();
 const exerciseId = exercise.attr('id');
 const userEmail = $('.navbar').attr('id');
-
-const recorder = new MicRecorder({bitRate: 128});
 const player = $('#player');
 
+const recorder = new MicRecorder(
+  {bitRate: 128}
+);
+
+const showScore = function(pitchScore, rhythmScore){
+  $('.star-scores').append($(`<p class='stars-heading'>Pitch Score: ${pitchScore} out of 5</p>`));
+  $('.star-scores').append($(`<p class='stars-heading'>Rhythm Score: ${rhythmScore} out of 5</p>`));
+}
+
 const getSheetMusic = function(song, label){
+  $('#loader-gif').hide();
   var newAttempt = `M: ${song.tse}\n` +
                    `L: ${song.each_beat}\n` +
                    `K: ${song.key}\n` +
                    `${song.notes.join(' ')}` + '|]';
-  var attemptScore = $('.exercises').append($('<div>', {class: 'paper', id: label}));
+  var attemptScore = $('.music').append($('<div>', {class: 'paper', id: label}));
   ABCJS.renderAbc(label, newAttempt);
 }
 
 const sendAttempt = function(file){
   player.src = URL.createObjectURL(file);
+  $('#loader-gif').show();
   let formData = new FormData();
   formData.append('audio', file);
   formData.append('user_email', userEmail);
@@ -24,8 +33,11 @@ const sendAttempt = function(file){
     method: 'POST',
     body: formData
   })
-  .then(response => response.json())
-  .then(response => getSheetMusic(response.song, 'attempt-song'))
+  .then((response) => response.json())
+  .then(function(response){
+    getSheetMusic(response.song, 'attempt-song');
+    showScore(response.pitch_score, response.rhythm_score);
+  })
   .catch((error) => console.error('Error:', error))
 }
 
@@ -34,26 +46,37 @@ const stopRecording = function(){
     let file = new File(buffer, 'input.mp3', {
       type: blob.type,
       lastModified: Date.now()
-    });
-    $('#stop').off();
+    })
     sendAttempt(file);
   })
 }
 
 const startRecording = function(){
   recorder.start().then(() => {
-    $('#start').off();
-    $('#stop').on('click', stopRecording);
+    $('.stop').on('click', function(){
+      $(this).hide();
+      $('.start').show();
+      stopRecording();
+    });
   })
 }
 
 $(document).ready(function(){
   ABCJS.renderAbc(exerciseId, exercise.html());
+  $('.stop').hide();
 })
 
 $('#upload').on('change', function(e) {
   let file = e.target.files[0];
+  let fileName = e.target.value.split('\\').pop();
+  if(fileName) {
+    $('label').html(fileName);
+  }
   sendAttempt(file);
 });
 
-$('#start').on('click', startRecording);
+$('.start').on('click', function(){
+  $(this).hide();
+  $('.stop').show();
+  startRecording();
+});

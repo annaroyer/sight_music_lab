@@ -1,5 +1,4 @@
 class Note
-  attr_reader :onset_time
 
   def initialize(attrs, beat_duration)
     @beat_duration = beat_duration
@@ -10,7 +9,7 @@ class Note
   end
 
   def num_beats
-    (duration / beat_duration).round
+    whole_beats.to_s + partial_beat
   end
 
   def letter
@@ -19,11 +18,15 @@ class Note
     abc_format(letter)
   end
 
+  def off_time
+    onset_time + duration
+  end
+
   private
-    attr_reader :midi_pitch, :duration, :beat_duration, :volume
+    attr_reader :midi_pitch, :duration, :beat_duration, :volume, :onset_time
 
     def silent?
-      volume < 0.001
+      volume < 0.01
     end
 
     def octave
@@ -40,5 +43,18 @@ class Note
       else
         letter.downcase + (Array.new(octave - 5, "'").join)
       end
+    end
+
+    def exact_beat_nums
+      duration / beat_duration
+    end
+
+    def whole_beats
+      (exact_beat_nums).round
+    end
+
+    def partial_beat
+      return '/2' if exact_beat_nums.modulo(1).between?(0.4, 0.6)
+      ''
     end
 end

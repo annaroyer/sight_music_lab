@@ -24,7 +24,7 @@ describe Note do
 
     describe '#num_beats' do
       it 'returns the number of beats represented as a whole or rational number' do
-        expect(subject.num_beats).to eq(1)
+        expect(subject.num_beats).to eq("1")
       end
     end
   end

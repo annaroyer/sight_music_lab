@@ -1,8 +1,36 @@
 .tree-img {
-  min-height: 700px;
+  max-height: 700px;
+  max-width: 75%;
 }
 
 .brand-img {
   max-height: 50px;
   margin-right: 5px;
+}
+
+#loader-gif {
+  display: none;
+  min-width: 90px;
+  margin-bottom: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 6%;
+}
+
+.white-star {
+  background: url('white-star-icon.svg');
+  min-width: 8px;
+}
+
+.outline-star {
+  background: url('outline-star-icon.svg');
+  min-width: 8px;
+}
+
+#next-page {
+  max-width: 70px;
+}
+
+#next-page:hover {
+  background_color: #F7F9FB
 }

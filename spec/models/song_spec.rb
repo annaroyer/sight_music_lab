@@ -23,9 +23,9 @@ describe Song do
       end
     end
 
-    describe '#beats_per_measure' do
-      it 'returns the number of beats per measure from the time signature' do
-        expect(subject.beats_per_measure).to eq(4)
+    describe '#measure_duration' do
+      it 'returns the length of time each measure should be' do
+        expect(subject.measure_duration).to eq(1.8461538461538463)
       end
     end
   end
@@ -44,7 +44,6 @@ describe Song do
         song = Song.from_upload(url)
 
         expect(song.class).to eq(Song)
-        expect(song.beats_per_measure).to eq(4)
       end
     end
   end

@@ -1,3 +1,9 @@
+$lake: #31708E;
+$medium-blue: #5085A5;
+$sky: #8FC1E3;
+$cloud: #F7F9FB;
+$charcoal: #3b3a36;
+
 .fancy-button {
   border-radius: 20px;
   min-width: 180px;
@@ -10,4 +16,39 @@
     family: 'Raleway', sans-serif;
   }
   margin: 0px 15px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+#record-border {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 3px solid $charcoal;
+}
+
+.start, .stop {
+  border: none;
+  outline: none;
+}
+
+.start:hover, .stop:hover,
+.start:focus, .stop:focus {
+  background-color: #FF4136;
+}
+
+.start {
+  background-color: $charcoal;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.stop {
+  background-color: #FF4136;
+  height: 20px;
+  width: 20px;
+  border-radius: 7%;
 }

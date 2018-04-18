@@ -1,16 +1,34 @@
-$sky: #7CDBD5;
-
 body {
   margin: 0px;
-  background-color: #A7D2CB;
+  padding: 0;
+  background-color: #8FC1E3;
+  width: 100%;
 }
 
 .main-root {
   display: flex;
-  padding: 30px 80px;
+  width: inherit;
+  height: inherit;
+}
+
+.right-main, .left-main {
+
+  min-height: 700px;
 }
 
 .right-main {
+  flex-grow: 1;
   padding-top: 25%;
-  padding-left: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.left-main {
+  flex-grow: 2;
+  background: url('AnnaTree-huh.png') no-repeat;
+  background-size: 1000px;
+  margin-left: 0;
+  background-position: right 10% top 16%;;
+  overflow: hidden;
+  padding: 0;
 }

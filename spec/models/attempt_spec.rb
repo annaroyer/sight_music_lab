@@ -6,18 +6,9 @@ describe Attempt, type: :model do
     it { should belong_to :exercise }
   end
 
-  context 'instance methods' do
-    describe '#song' do
-      it 'calls song to instantiate from the audio url' do
-        attempt = Attempt.new
-        song = double('song')
-        allow(Song).to receive(:from_upload).and_return(song)
-
-
-
-        expect(attempt.song).to eq(song)
-        expect(Song).to have_received(:from_upload)
-      end
-    end
+  context 'validations' do
+    it { should validate_presence_of :song }
+    it { should validate_presence_of :pitch_score }
+    it { should validate_presence_of :rhythm_score }
   end
 end

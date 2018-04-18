@@ -1,0 +1,63 @@
+.exercises {
+  display: flex;
+
+  .music {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .paper {
+      background-color: #F0EFF0;
+      margin-top: 5%;
+      margin-bottom: 1%;
+      padding: 3%;
+      border-radius: 10px;
+      box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .control-item {
+        margin: 0 25px;
+      }
+
+      #player {
+        // display: none;
+        min-width: 500px;
+        min-height: 15px;
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+
+  .star-scores, .next-page {
+    display: flex;
+    flex-shrink: 1;
+    justify-content: space-between;
+    padding-top: 20%;
+  }
+
+  .star_scores {
+    #pitch-score, #rhythm-score {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+}
+
+.stars-heading {
+  font: {
+    family: 'Rufina', serif;
+    size: 16px;
+  }
+  color: #F7F9FB;
+  margin: 5%;
+}

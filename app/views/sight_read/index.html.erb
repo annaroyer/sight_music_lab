@@ -1,14 +1,36 @@
 <main class="exercises">
-  <input type="file" accept="audio/*" capture id="upload">
-  <audio id="player" controls></audio>
+  <section class="star-scores">
+    <div id="pitch-score">
+    </div>
+    <div id="rhythm-score">
+    </div>
+  </section>
 
-  <button id="start">Record</button>
-  <button id="stop">Stop</button>
+  <section class="music">
+    <div class="paper" id=<%= @exercise.id %>>
+      M: <%= @exercise.tse %>
+      L: 1/8
+      K: <%= @exercise.key %>
+      <%= @exercise.notes %>
+    </div>
 
-  <div class="paper" id=<%= @exercise.id %>>
-    M: <%= @exercise.tse %>
-    L: 1/4
-    K: <%= @exercise.key %>
-    <%= @exercise.notes %>
-  </div>
+    <div class="controls">
+      <div id="record-border" class="control-item">
+        <button class="stop"></button>
+        <button class="start"></button>
+      </div>
+
+      <audio id="player" class="control-item" controls></audio>
+      <input type="file" accept="audio/*" capture id="upload" class="control-item">
+      <label for="upload" class="upload">+ Add a File...</label>
+    </div>
+
+    <%= image_tag 'ajax-loader.gif', id: 'loader-gif' %>
+  </section>
+
+  <section class="next-page">
+    <%= link_to sight_read_path do %>
+      <%= image_tag 'next-page', id: 'next-page' %>
+    <% end %>
+  </section>
 </main>

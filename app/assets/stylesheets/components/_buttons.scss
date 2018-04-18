@@ -2,6 +2,7 @@ $lake: #31708E;
 $medium-blue: #5085A5;
 $sky: #8FC1E3;
 $cloud: #F7F9FB;
+$charcoal: #3b3a36;
 
 .fancy-button {
   border-radius: 20px;
@@ -18,56 +19,37 @@ $cloud: #F7F9FB;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.form-button {
-  border-radius: 5px;
-  padding: 10px;
-  color: #F7F9FB;
-  border: none;
-  outline: none;
-  border: 2px dotted $medium-blue;
-  border-radius: 20px;
-  color: $cloud;
-  font: {
-    family: 'Raleway', sans-serif;
-    size: 18px;
-  }
-  width: 95px;
-  height: 15px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
 
 #record-border {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  border: 3px solid $cloud;
-  background-color: black;
-}
-
-.start {
-  background-color: red;
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  border: 3px solid $charcoal;
+}
+
+.start, .stop {
   border: none;
   outline: none;
+}
+
+.start:hover, .stop:hover,
+.start:focus, .stop:focus {
+  background-color: #FF4136;
+}
+
+.start {
+  background-color: $charcoal;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
 }
 
 .stop {
-  background-color: red;
-  height: 30px;
-  width: 30px;
-  border-radius: 10%;
-  border: none;
-  outline: none;
-}
-
-.form-button:hover {
-  opacity: 0.5;
-  border-color: $cloud;
+  background-color: #FF4136;
+  height: 18px;
+  width: 18px;
+  border-radius: 7%;
 }

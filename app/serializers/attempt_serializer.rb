@@ -4,4 +4,12 @@ class AttemptSerializer < ActiveModel::Serializer
   def song
     SongSerializer.new(object.song).attributes
   end
+
+  def pitch_score
+    object.pitch_score
+  end
+
+  def rhythm_score
+    object.rhythm_score
+  end
 end

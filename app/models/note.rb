@@ -45,12 +45,16 @@ class Note
       end
     end
 
+    def exact_beat_nums
+      duration / beat_duration
+    end
+
     def whole_beats
-      (duration / beat_duration).round
+      (exact_beat_nums).round
     end
 
     def partial_beat
-      return '/2' if (duration / beat_duration % whole_beats).between?(0.4, 0.6)
+      return '/2' if exact_beat_nums.modulo(1).between?(0.4, 0.6)
       ''
     end
 end

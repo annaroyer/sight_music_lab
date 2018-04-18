@@ -2,7 +2,7 @@ class Api::V1::Exercises::AttemptsController < ApiController
 
   def create
     attempt = AttemptAnalyzer.new(attempt_params).generate
-    render json: attempt
+    render json: attempt, serializer: AttemptSerializer
   end
 
   private

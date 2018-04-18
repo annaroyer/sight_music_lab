@@ -8,9 +8,9 @@ class Song
     @raw_notes = attrs[:notes]
   end
 
-  def self.from_upload(audio)
+  def self.from_upload(audio, tse='4/4', bpm=130)
     raw_song = SonicApiService.post_file(audio)
-    new(raw_song)
+    new(raw_song, tse='4/4', bpm=130)
   end
 
   def notes

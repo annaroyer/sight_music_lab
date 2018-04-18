@@ -14,7 +14,8 @@ describe 'As a user' do
 
       expect(page).to have_css('input')
       expect(page).to have_css('audio')
-      expect(page).to have_button('Record')
+      expect(page).to have_css('.stop')
+      expect(page).to have_css('.start')
       expect(page).to have_css('.exercises')
       expect(page).to have_css("##{exercise.id}")
 

@@ -1,9 +1,10 @@
 <main class="exercises">
-  <input type="file" accept="audio/*" capture id="upload">
-  <audio id="player" controls></audio>
-
-  <button id="start">Record</button>
-  <button id="stop">Stop</button>
+  <section class="controls">
+    <label class="form-button" for="upload">+ Add File...</label>
+    <button class="start"></button>
+    <button class="stop"></button>
+    <input type="file" accept="audio/*" capture id="upload">
+  </section>
 
   <div class="paper" id=<%= @exercise.id %>>
     M: <%= @exercise.tse %>
@@ -11,4 +12,7 @@
     K: <%= @exercise.key %>
     <%= @exercise.notes %>
   </div>
+
+  <audio id="player" controls></audio>
+
 </main>

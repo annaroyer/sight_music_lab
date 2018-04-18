@@ -9,7 +9,7 @@ FactoryBot.define do
   end
 
   factory :exercise do
-    notes "z1 A^,1 D1 | F1 D1 A^,2"
+    notes "z1 A^,2 D2 | F2 D2 A^,3"
     key 'A^ Maj'
     tse '4/4'
   end

@@ -2,17 +2,18 @@ body {
   margin: 0px;
   padding: 0;
   background-color: #8FC1E3;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .main-root {
   display: flex;
   width: inherit;
-  height: inherit;
+  max-height: inherit;
 }
 
 .right-main, .left-main {
-
   min-height: 700px;
 }
 
@@ -25,7 +26,8 @@ body {
 
 .left-main {
   flex-grow: 2;
-  background: url('AnnaTree-huh.png') no-repeat;
+  background-image: image-url('AnnaTree-huh.png');
+  background-repeat: no-repeat;
   background-size: 1000px;
   margin-left: 0;
   background-position: right 10% top 16%;;

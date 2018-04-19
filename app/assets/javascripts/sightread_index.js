@@ -55,7 +55,8 @@ const startRecording = function(){
   recorder.start().then(() => {
     $('.stop').on('click', function(){
       $(this).hide();
-      $('.start').show();
+      $('#record-border').hide();
+      $('#upload').hide();
       stopRecording();
     });
   })
@@ -73,6 +74,7 @@ $('#upload').on('change', function(e) {
     $('label').html(fileName);
   }
   sendAttempt(file);
+  $('#upload').off();
 });
 
 $('.start').on('click', function(){

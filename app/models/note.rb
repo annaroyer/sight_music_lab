@@ -34,7 +34,7 @@ class Note
     end
 
     def letter_notes
-      ['C', 'C^', 'D', 'D^', 'E', 'F', 'F^', 'G', 'G^', 'A', 'A^', 'B']
+      ['C', 'C^', 'D', '^D', 'E', 'F', '^F', 'G', '^G', 'A', '^A', 'B']
     end
 
     def abc_format(letter)

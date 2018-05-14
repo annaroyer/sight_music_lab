@@ -22,15 +22,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Clone down this repository ```git clone https://github.com/annaroyer/sight_music_lab.git```
-Change into the project directory ```cd sight_music_lab```
-Install dependencies ```bundle install```
+* Clone down this repository ```git clone https://github.com/annaroyer/sight_music_lab.git```
+* Change into the project directory ```cd sight_music_lab```
+* Install dependencies ```bundle install```
 
-Visit http://www.sonicapi.com, sign up for an account and register for an API key
-Install figaro ```figaro install```
-Open application.yml ```open config/application.yml```, and enter ```SONIC_API_KEY: COPY YOUR API KEY HERE```
-Run rails server ```rails s```
-Visit localhost:3000 in your browser
+* Visit http://www.sonicapi.com, sign up for an account and register for an API key
+* Install figaro ```figaro install```
+* Open application.yml ```open config/application.yml```, and enter ```SONIC_API_KEY: COPY YOUR API KEY HERE```
+* Run rails server ```rails s```
+* Visit localhost:3000 in your browser
 
 ## Running the tests
 

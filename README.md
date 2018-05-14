@@ -44,6 +44,7 @@ Open application.yml
 open config/application.yml
 ```
 * Enter ```SONIC_API_KEY: COPY YOUR API KEY HERE``` and save
+
 Run rails server 
 ```
 rails s

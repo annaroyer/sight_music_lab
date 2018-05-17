@@ -4,8 +4,6 @@ A sight reading application, specifically designed for people learning to sight-
 
 Displays short sight-reading musical exercises. A user can record themself singing or performing the exercise in the browser or upload an audio file. The application processes the audio of their performance to display the musical notation of their performance below the original exercise and a score out of ten on rhythmic and melodic accuracy.
 
-This application implements authentication through Google OAuth 2.0 
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -75,6 +73,8 @@ Tests include:
 
 * [active_model_serializers](https://github.com/rails-api/active_model_serializers) - Used to serialize user's performances in                                                                                       the database
 * [paperclip](https://github.com/thoughtbot/paperclip) - Used to store user audio recordings with Amazon Web Services                                                                  associated with a users' attempts
+
+* [omniauth-google-oauth2](https://github.com/zquestz/omniauth-google-oauth2) - Used to authenticate users via Google OAuth                                                                                   2.0
 
 ## Contributing
 

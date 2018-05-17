@@ -2,7 +2,7 @@
 
 A sight reading application, specifically designed for people learning to sight-sing in mind.
 
-The application displays short sight-reading musical exercises. The user can record themself singing or performing the exercise through the application or upload an audio file. The application processes the audio of their performance and then displays the musical notation of what the user sang below the original exercise. It also displays a score of their performance and an embedded audio element for them to play back their recording.
+Displays short sight-reading musical exercises. A user can record themself singing or performing the exercise in the browser or upload an audio file. The application processes the audio of their performance to display the musical notation of their performance below the original exercise and a score out of ten on rhythmic and melodic accuracy.
 
 This application uses SonicAPI (http://www.sonicapi.com/), a web api service that performs music processing and music analysis. After the user records themselves, the application sends a post request to SonicAPI's  '/analyze/melody' endpoint with an audio file of the user's recorded audio data.  The post request to this endpoint returns the midi-pitch, duration in seconds, onset time in seconds and normalized volume of each pitch in the audio file. 
 
@@ -56,19 +56,27 @@ Visit localhost:3000 in your browser
 To run all tests ```rspec```
 
 ### Tested With
+* [Capybara](https://github.com/teamcapybara/capybara)
+* [factory_bot_rails](https://github.com/thoughtbot/factory_bot)
+* [webmock](https://github.com/bblimke/webmock)
+* [vcr](https://github.com/vcr/vcr)
+* [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+* [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
 
-### Break down into end to end tests
+### Tests include: 
 
-Explain what these tests test and why
+Feature tests
 
 ```
 Give an example
 ```
 
-### And coding style tests
+Request tests
+```
+Give an example
+```
 
-Explain what these tests test and why
-
+Model Tests
 ```
 Give an example
 ```
@@ -76,15 +84,19 @@ Give an example
 ## Built With
 
 * [Sonic API](http://www.sonicapi.com) - The web api used to perform music processing and music analysis.
+   * The application sends a post request to SonicAPI's  '/analyze/melody' endpoint with an audio file of the user's recorded        audio data.
+  * A post request to this endpoint returns the midi-pitch, duration in seconds, onset time in seconds and          normalized    volume of each pitch in the audio file.
+  
 * [abcJS](https://github.com/paulrosen/abcjs) - The javascript library used for rendering musical notation
+* [mid-recorder-to-mp3](https://www.npmjs.com/package/mic-recorder-to-mp3) - The javascript library used to get an mp3 file                                                                                from a microphone audio recording
+* [active_model_serializers](https://github.com/rails-api/active_model_serializers) - Used to serialize user's performances in                                                                                       the database
+* [paperclip](https://github.com/thoughtbot/paperclip) - Used to store user audio recordings with Amazon Web Services                                                                  associated with a users' attempts
 
 ## Contributing
 
-This application is a work in progress, and I encourage pull requests and issues on with your insights on how it can be improved. 
+This application is a work in progress, and I encourage pull requests on how it can be improved. 
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Inspired by [Colorado All-State Choir Audition Process](https://aschoir.com/auditions/) as I initially developed the application with high school choir students in mind
 

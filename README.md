@@ -4,6 +4,11 @@ A sight reading application, specifically designed for people learning to sight-
 
 Displays short sight-reading musical exercises. A user can record themself singing or performing the exercise in the browser or upload an audio file. The application processes the audio of their performance to display the musical notation of their performance below the original exercise and a score out of ten on rhythmic and melodic accuracy.
 
+## Deployed Application
+
+This application is deployed through heroku. 
+You can view the current production version of the application at [Sight Music Lab](https://sight-music-lab.herokuapp.com/)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -61,12 +66,6 @@ Tests include:
 * [vcr](https://github.com/vcr/vcr)
 * [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
 * [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
-
-## Deployed Application
-
-This application is deployed through heroku. 
-You can view the current production version of the application at [Sight Music Lab](https://sight-music-lab.herokuapp.com/)
-
 
 ## Built With
 

@@ -6,7 +6,6 @@ Displays short sight-reading musical exercises. A user can record themself singi
 
 ## Deployed Application
 
-This application is deployed through heroku. 
 You can view the current production version of the application at [Sight Music Lab](https://sight-music-lab.herokuapp.com/)
 
 ## Getting Started

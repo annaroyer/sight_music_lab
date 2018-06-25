@@ -1,4 +1,4 @@
-<main class="exercises">
+<main class="sight-reading">
   <section class="star-scores">
     <div id="pitch-score">
     </div>
@@ -6,31 +6,43 @@
     </div>
   </section>
 
-  <section class="music">
-    <div class="paper" id=<%= @exercise.id %>>
+  <section class="exercise">
+    <div class="sheet-music" id=<%= @exercise.id %>>
       M: <%= @exercise.tse %>
-      L: 1/8
+      L: <%= @exercise.single_beat %>
       K: <%= @exercise.key %>
       <%= @exercise.notes %>
     </div>
 
     <div class="controls">
+      <div class="control-item">
+
+      </div>
+      
       <div id="record-border" class="control-item">
         <button class="stop"></button>
         <button class="start"></button>
       </div>
 
-      <audio id="player" class="control-item" controls></audio>
-      <input type="file" accept="audio/*" capture id="upload" class="control-item">
-      <label for="upload" class="upload">+ Add a File...</label>
+      <div class="control-item">
+        <input type="file" accept="audio/*" capture id="upload" class="control-item">
+        <label for="upload" class="upload"><%= image_tag 'upload.svg', class: 'upload-icon' %></label>
+      </div>
     </div>
 
     <%= image_tag 'ajax-loader.gif', id: 'loader-gif' %>
   </section>
 
+  <section class="attempt">
+    <div class="controls">
+      <audio id="player" class="control-item" controls>
+        <source id="mp3_src" type="audio/mp3" />
+      </audio>
+    </div>
+
+  </section>
+
   <section class="next-page">
-    <%= link_to sight_read_path do %>
-      <%= image_tag 'next-page.svg', id: 'next-page' %>
-    <% end %>
+    <%= link_to '', sight_read_path, id: 'next-page' %>
   </section>
 </main>

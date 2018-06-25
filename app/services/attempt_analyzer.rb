@@ -20,7 +20,7 @@ class AttemptAnalyzer
     attr_reader :user, :exercise, :upload
 
     def song
-      @song ||= Song.from_upload(upload.audio.url, exercise.tse)
+      @song ||= Song.from_upload(upload.audio.url, exercise)
     end
 
     def rhythm_score

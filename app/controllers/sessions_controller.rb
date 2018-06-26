@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
     user = User.update_or_create(request.env["omniauth.auth"])
     session[:user_id] = user.uid
     if user.save
-      redirect_to dashboard_path
+      redirect_to sight_read_path
     else
-      redirect_to sight-read_path
+      redirect_to root_path
     end
   end
 

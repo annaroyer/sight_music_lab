@@ -16,13 +16,15 @@ describe 'As a user' do
       expect(page).to have_css('audio')
       expect(page).to have_css('.stop')
       expect(page).to have_css('.start')
-      expect(page).to have_css('.exercises')
+      expect(page).to have_css('.exercise')
       expect(page).to have_css("##{exercise.id}")
 
       within("##{exercise.id}") do
         expect(page).to have_content(exercise.notes)
         expect(page).to have_content("M: #{exercise.tse}")
+        expect(page).to have_content("L: #{exercise.single_beat}")
         expect(page).to have_content("K: #{exercise.key}")
+        expect(page).to have_content("#{exercise.notes}")
       end
     end
   end
@@ -35,7 +37,9 @@ describe 'As a user' do
     within("##{exercise.id}") do
       expect(page).to have_content(exercise.notes)
       expect(page).to have_content("M: #{exercise.tse}")
+      expect(page).to have_content("L: #{exercise.single_beat}")
       expect(page).to have_content("K: #{exercise.key}")
+      expect(page).to have_content("#{exercise.notes}")
     end
   end
 end

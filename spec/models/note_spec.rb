@@ -9,7 +9,7 @@ describe Note do
   context 'instance methods' do
     describe '#name' do
       it 'returns the letter note and abc octave format as a string' do
-        expect(subject.letter).to eq('A^,')
+        expect(subject.letter).to eq('^A,')
       end
 
       it 'returns the note in a different abc octave format' do

@@ -25,7 +25,7 @@ describe 'Attempts API' do
       expect(attempt[:song][:key]).to eq("A^ Maj")
       expect(attempt[:song][:tse]).to eq("4/4")
       expect(attempt[:song][:each_beat]).to eq("1/4")
-      expect(attempt[:song][:notes]).to eq(["z1", "^A,2", "D2 | ", "F2", "D2", "^A,3 | "])
+      expect(attempt[:song][:notes]).to eq(["z1", "^A,1", "D1 | ", "F1", "D1", "^A,2 | "])
       expect(attempt[:pitch_score]).to eq(5)
       expect(attempt[:rhythm_score]).to eq(5)
     end

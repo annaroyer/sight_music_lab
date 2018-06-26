@@ -3,13 +3,15 @@ require 'rails_helper'
 describe 'As a visitor' do
   context 'when I visit / and click get started' do
     scenario 'I can start an account using google' do
+      create(:exercise)
+      
       stub_omniauth
 
       visit root_path
 
       click_button 'Get Started'
 
-      expect(current_path).to eq('/dashboard')
+      expect(current_path).to eq('/sight-read')
       expect(page).to have_content('Welcome, Anna')
     end
   end
@@ -18,26 +20,30 @@ end
 describe 'As a user' do
   context 'when I visit / and click login' do
     scenario 'I can login using google' do
+      create(:exercise)
+
       stub_omniauth
 
       visit root_path
 
       click_button 'Log In'
 
-      expect(current_path).to eq('/dashboard')
+      expect(current_path).to eq('/sight-read')
       expect(page).to have_content('Welcome, Anna')
     end
   end
 
   context 'when I am logged in and click on log out' do
     scenario 'I am no longer logged in' do
+      create(:exercise)
+
       stub_omniauth
 
       visit root_path
 
       click_button 'Log In'
 
-      click_button 'Log Out'
+      within('#menu') { click_button 'Log Out' }
 
       expect(current_path).to eq(root_path)
       expect(page).to have_button('Log In')

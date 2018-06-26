@@ -27,7 +27,7 @@ describe AttemptAnalyzer do
           expect(upload).to have_received(:audio)
           expect(song).to have_received(:notes)
           expect(attempt.pitch_score).to eq(2)
-          expect(attempt.rhythm_score).to eq(1)
+          expect(attempt.rhythm_score).to eq(4)
         end
       end
     end

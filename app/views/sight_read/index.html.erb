@@ -1,20 +1,20 @@
 <main class="sight-reading">
-  <section class="star-scores">
-    <div id="pitch-score">
+  <section class="scores-container">
+    <div class="star-score" id="pitch-score">
       Pitches
-      <%= image_tag 'star.svg', id: 'pitch-star-1' %>
-      <%= image_tag 'star.svg', id: 'pitch-star-2' %>
-      <%= image_tag 'star.svg', id: 'pitch-star-3' %>
-      <%= image_tag 'star.svg', id: 'pitch-star-4'  %>
-      <%= image_tag 'star.svg', id: 'pitch-star-5'  %>
+      <%= image_tag 'outline-star-icon.svg', id: 'pitch-star-1' %>
+      <%= image_tag 'outline-star-icon.svg', id: 'pitch-star-2' %>
+      <%= image_tag 'outline-star-icon.svg', id: 'pitch-star-3' %>
+      <%= image_tag 'outline-star-icon.svg', id: 'pitch-star-4'  %>
+      <%= image_tag 'outline-star-icon.svg', id: 'pitch-star-5'  %>
     </div>
-    <div id="rhythm-score">
+    <div class="star-score" id="rhythm-score">
       Rhythm
-      <%= image_tag 'star.svg', id: 'rhythm-star-1' %>
-      <%= image_tag 'star.svg', id: 'rhythm-star-2' %>
-      <%= image_tag 'star.svg', id: 'rhythm-star-3' %>
-      <%= image_tag 'star.svg', id: 'rhythm-star-4'  %>
-      <%= image_tag 'star.svg', id: 'rhythm-star-5'  %>
+      <%= image_tag 'outline-star-icon.svg', id: 'rhythm-star-1' %>
+      <%= image_tag 'outline-star-icon.svg', id: 'rhythm-star-2' %>
+      <%= image_tag 'outline-star-icon.svg', id: 'rhythm-star-3' %>
+      <%= image_tag 'outline-star-icon.svg', id: 'rhythm-star-4'  %>
+      <%= image_tag 'outline-star-icon.svg', id: 'rhythm-star-5'  %>
     </div>
   </section>
 
@@ -46,6 +46,11 @@
   </section>
 
   <section class="attempt">
+    <div class="sheet-music" id="attempt-song">
+      M: <%= @exercise.tse %>
+      L: <%= @exercise.single_beat %>
+      K: <%= @exercise.key %>
+    </div>
     <div class="controls">
       <audio id="player" class="control-item" controls>
         <source id="mp3_src" type="audio/mp3" />

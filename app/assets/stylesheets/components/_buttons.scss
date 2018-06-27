@@ -5,28 +5,30 @@ $cloud: #F7F9FB;
 $charcoal: #3b3a36;
 
 .fancy-button {
-  border-radius: 20px;
-  min-width: 180px;
-  min-height: 30px;
+  border-radius: 2rem;
   color: #2F2F28;
   border: none;
   outline: none;
   font: {
-    size: 25px;
+    size: 1.2rem;
     family: 'Raleway', sans-serif;
   }
-  margin: 0px 15px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  padding: 0.3rem 1rem;
+}
+
+.fancy-button:hover {
+  cursor: pointer;
 }
 
 #record-border {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  width: 40px;
+  height: 3.2rem;
+  width: 3.2rem;
   border-radius: 50%;
-  border: 3px solid $charcoal;
+  background: -webkit-radial-gradient(45px 45px, circle cover, $cloud, $charcoal);
 }
 
 .start, .stop {
@@ -36,19 +38,65 @@ $charcoal: #3b3a36;
 
 .start:hover, .stop:hover,
 .start:focus, .stop:focus {
-  background-color: #FF4136;
+  background: -webkit-radial-gradient(45px 45px, circle cover, #a02339, #d81313);
+  cursor: pointer;
 }
 
 .start {
-  background-color: $charcoal;
-  height: 20px;
-  width: 20px;
+  background: -webkit-radial-gradient(45px 45px, circle cover, $cloud, black);
+  height: 1.5rem;
+  width: 1.5rem;
   border-radius: 50%;
 }
 
 .stop {
-  background-color: #FF4136;
-  height: 20px;
-  width: 20px;
+  display: none;
+  background: -webkit-radial-gradient(45px 45px, circle cover, #a02339, #d81313);
+  height: 1.5rem;
+  width: 1.5rem;
   border-radius: 7%;
+}
+
+#next-page {
+  background-image: image-url('next-page.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 5em;
+  height: 5em;
+}
+
+#next-page:hover {
+  background-image: image-url('next-page-hover.svg');
+  background-size: 4.2em;
+}
+
+@media (any-pointer: coarse) {
+  #record-border {
+    height: 3em;
+    width: 3em;
+    background: none;
+    border: 0.3em solid;
+    .start, .stop {
+      background: black;
+    }
+    .start {
+      height: 3em;
+      width: 3em;
+    }
+    .stop {
+      height: 2.5em;
+      width: 2.5em;
+    }
+  }
+}
+
+@media (min-height: 500px) and (any-pointer: coarse) {
+  #record-border {
+    position: absolute;
+    bottom: 0;
+  }
+
+  #next-page {
+    background-size: 3em;
+  }
 }

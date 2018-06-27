@@ -9,7 +9,7 @@ describe Note do
   context 'instance methods' do
     describe '#name' do
       it 'returns the letter note and abc octave format as a string' do
-        expect(subject.letter).to eq('A^,')
+        expect(subject.letter).to eq('^A,')
       end
 
       it 'returns the note in a different abc octave format' do
@@ -24,7 +24,7 @@ describe Note do
 
     describe '#num_beats' do
       it 'returns the number of beats represented as a whole or rational number' do
-        expect(subject.num_beats).to eq("1")
+        expect(subject.num_beats).to eq(1)
       end
     end
   end

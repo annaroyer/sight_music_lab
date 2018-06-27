@@ -1,36 +1,74 @@
-body {
-  margin: 0px;
+* {
+  margin: 0;
   padding: 0;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+  min-width: 100%;
   background-color: #8FC1E3;
-  max-width: 100%;
-  max-height: 100%;
-  overflow: hidden;
 }
 
 .main-root {
-  display: flex;
-  width: inherit;
-  max-height: inherit;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: image-url('AnnaTree-huh.png') no-repeat bottom -5vh left -20vh fixed;
+  background-size: 150vh;
+
+  .button-container {
+    position: absolute;
+    top: 45vh;
+    right: 15%;
+
+    .fancy-button {
+      padding: 0.5rem 2rem;
+    }
+  }
 }
 
-.right-main, .left-main {
-  min-height: 700px;
+@media (max-width: 1400px) {
+  .main-root {
+    background-position: bottom -5vh center;
+    background-size: 130vh;
+
+    .button-container {
+      background-color: rgba(1, 1, 1, 0.5);
+      height: 4.5em;
+      width: 100%;
+      right: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 
-.right-main {
-  flex-grow: 1;
-  padding-top: 25%;
-  display: flex;
-  justify-content: center;
+@media (max-width: 550px) {
+  .main-root {
+    background-size: 80vh;
+    background-position: bottom -1vh center;
+
+    .button-container {
+      background-color: inherit;
+      height: 45%;
+    }
+  }
 }
 
-.left-main {
-  flex-grow: 2;
-  background-image: image-url('AnnaTree-huh.png');
-  background-repeat: no-repeat;
-  background-size: 1000px;
-  margin-left: 0;
-  background-position: right 10% top 16%;;
-  overflow: hidden;
-  padding: 0;
+@media (max-height: 450px) and (max-width: 1400px) {
+  .main-root {
+    .button-container {
+      background-color: inherit;
+      width: 30%;
+      height: 100%;
+      right: 70%;
+    }
+  }
 }

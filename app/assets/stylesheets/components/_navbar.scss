@@ -1,19 +1,24 @@
 $aquamarine: #02C8A7;
+
 .navbar {
   display: flex;
   background-color: #F7F9FB;
   font-family: 'Rufina', serif;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  height: 4em;
+  padding: 0 5%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   .nav-right, .nav-left, .nav-center {
-    padding: 15px 30px;
     display: flex;
     align-items: center;
     flex-grow: 1;
   }
 
   .nav-left {
-    font-size: 30px;
+    font-size: 1.5em;
   }
 
   .brand-link, .brand-link:link, .brand-link:visited, .brand-link:hover, .brand-link:focus, .brand-link:active {
@@ -30,7 +35,78 @@ $aquamarine: #02C8A7;
   }
 
   .nav-item {
-    padding: 0px 20px;
+    padding: 0rem 2rem;
     font-family: 'Raleway', sans-serif;
+  }
+
+  .dropdown, #menu-dropdown {
+    display: none;
+  }
+
+  #menu {
+    visibility: collapse;
+  }
+}
+
+@media (max-width: 750px) {
+  .navbar {
+    .dropdown {
+      display: block;
+      justify-content: center;
+      img {
+        max-width: 2em;
+      }
+    }
+
+    .dropdown:hover {
+      cursor: pointer;
+    }
+
+    .nav-item {
+      display: none;
+    }
+
+    .nav-left {
+      font-size: 1.3em;
+    }
+
+    .brand-img {
+      max-height: 2em;
+    }
+
+    .nav-right {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #menu {
+      background: #F7F9FB;
+      opacity: 0.9;
+      text-align: center;
+      list-style-type: none;
+      position: absolute;
+      top: 4em;
+      right: 1vw;
+      box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+
+      li {
+        padding: 0.5rem 3rem;
+        border-bottom: 0.08rem solid #3b3a36;
+
+        .fancy-button {
+          border-radius: 0;
+          box-shadow: none;
+          border: 0.08rem solid;
+        }
+        .fancy-button:hover {
+          cursor: pointer;
+          box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #3b3a36;
+        }
+      }
+    }
+
+    #menu-dropdown:checked ~ #menu {
+      visibility: visible;
+    }
   }
 }

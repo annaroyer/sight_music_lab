@@ -1,8 +1,10 @@
 class Song
+  attr_reader :beats_per_measure
+
   def initialize(raw_notes, exercise, bpm=130)
     @key = exercise.key
-    @tse = exercise.tse
-    @bpm = bpm
+    @beats_per_measure = exercise.tse.to_i
+    @beat_duration = 60.0 / bpm.to_f
     @raw_notes = raw_notes
   end
 
@@ -17,15 +19,7 @@ class Song
     end
   end
 
-  def beats_per_measure
-    @beats_per_measure ||= tse.to_i
-  end
-
   private
-    attr_reader :raw_notes, :bpm, :tse
-
-
-    def beat_duration
-      @beat_duration ||= 60.0 / bpm.to_f
-    end
+    attr_reader :raw_notes, :beat_duration
+    
 end

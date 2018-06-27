@@ -5,12 +5,8 @@ describe Song do
   subject { Song.new(melody_analysis_notes, exercise) }
 
   context 'attributes' do
-    it 'has a key in abc notation' do
-      expect(subject.key).to eq("A^ Maj")
-    end
-
-    it 'has a tse' do
-      expect(subject.tse).to eq('4/4')
+    it 'has beats_per_measure' do
+      expect(subject.beats_per_measure).to eq(4)
     end
   end
 
@@ -21,12 +17,6 @@ describe Song do
         allow(Note).to receive(:new).and_return(note)
 
         expect(subject.notes).to eq([note, note, note, note, note, note])
-      end
-    end
-
-    describe '#measure_duration' do
-      it 'returns the length of time each measure should be' do
-        expect(subject.measure_duration).to eq(1.8461538461538463)
       end
     end
   end

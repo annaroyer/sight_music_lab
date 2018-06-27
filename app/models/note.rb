@@ -40,9 +40,9 @@ class Note
 
     def abc_format(letter)
       if octave <= 4
-        letter.ljust(4 - octave, ",")
+        letter <<  ("," * (4 - octave))
       else
-        letter.downcase.ljust(octave - 5, "'")
+        letter.downcase << ("'" * (octave - 5))
       end
     end
 

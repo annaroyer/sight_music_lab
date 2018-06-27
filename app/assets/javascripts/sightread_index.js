@@ -5,19 +5,21 @@ const player = $('#player')
 
 const recorder = new MicRecorder({bitRate: 128})
 
-const showScore = function(pitchScore, rhythmScore){
-  $('.star-scores').append($(`<p class='stars-heading'>Pitch Score: ${pitchScore} out of 5</p>`))
-  $('.star-scores').append($(`<p class='stars-heading'>Rhythm Score: ${rhythmScore} out of 5</p>`))
+const showScore = (pitchScore, rhythmScore) => {
+  for(i = 0; i < pitchScore; i++){
+    $(`#pitch-star-${i}`).attr('src', 'assets/star-icon.svg')
+  }
+  for(i = 0; i < rhythmScore; i++){
+    $(`#rhythm-star-${i}`).attr('src', 'assets/star-icon.svg')
+  }
+  $('.star-score').show()
 }
 
-const getSheetMusic = (song, label) => {
+const getSheetMusic = (notes) => {
   $('#loader-gif').hide()
-  const newAttempt = `M: ${song.tse}\n` +
-                   `L: ${song.each_beat}\n` +
-                   `K: ${song.key}\n` +
-                   `${song.notes.join(' ')}` + '|]'
-  $('.attempt').show().prepend($('<div>', {class: 'sheet-music', id: label}))
-  ABCJS.renderAbc(label, newAttempt)
+  $('#attempt-song').append(notes + '|]')
+  ABCJS.renderAbc('attempt-song', $('#attempt-song').html())
+  $('.attempt').show()
 }
 
 
@@ -38,7 +40,7 @@ const sendAttempt = (file) => {
   })
   .then(response => response.json())
   .then(response => {
-    getSheetMusic(response.song, 'attempt-song')
+    getSheetMusic(response.song.notes)
     showScore(response.pitch_score, response.rhythm_score)
   })
   .catch((error) => console.error('Error:', error))
@@ -67,6 +69,7 @@ $(document).ready(() => {
   $('.attempt').hide()
   $('.start').show()
   $('.stop').hide()
+  $('.star-score').hide()
 })
 
 $('#upload').change(event => {

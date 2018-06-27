@@ -1,27 +1,13 @@
 class SongSerializer < ActiveModel::Serializer
   alias :read_attribute_for_serialization :send
-  attributes :key, :tse, :each_beat, :notes
+  attributes :notes
 
-  def notes(beats=0)
-    object.notes.map do |note|
-      name = "#{note.letter}#{note.num_beats}"
-      if note.off_time % object.measure_duration <= 0.25
-        name + ' | '
-      else
-        name
-      end
+  def notes(sum_beats=0)
+    object.notes.reduce('') do | note_string, note |
+      note_string << note.to_abcJS_string
+      sum_beats += note.num_beats.to_r.to_f
+      note_string << ' | ' if sum_beats % 4 == 0 && sum_beats > 0
+      note_string
     end
-  end
-
-  def key
-    object.key
-  end
-
-  def each_beat
-    '1/' + object.tse.split('/').last
-  end
-
-  def tse
-    object.tse
   end
 end

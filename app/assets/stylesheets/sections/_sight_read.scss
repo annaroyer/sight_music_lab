@@ -1,63 +1,90 @@
-.exercises {
-  display: flex;
+.sight-reading {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
 
-  .music {
-    flex-grow: 3;
+  .scores-container {
+    grid-area: 1 / 2 / auto / 6;
+    padding: 5%;
+
+    .star-score {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: {
+        family: 'Raleway', sans-serif;
+        size: 1rem;
+        weight: bold;
+      }
+
+      img {
+        height: 2em;
+        margin: 0.3em;
+      }
+    }
+  }
+
+  .exercise {
+    grid-area: 2 / 2 / auto / -2;
+  }
+
+  .attempt {
+    grid-area: 3 / 2 / auto / -2;
+  }
+
+  .exercise, .attempt {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
-    .paper {
+    .sheet-music {
       background-color: #F0EFF0;
-      margin-top: 5%;
-      margin-bottom: 1%;
       padding: 3%;
-      border-radius: 10px;
-      box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
+      margin-bottom: 5%;
+      border-radius: 1rem;
+      box-shadow: 0.3rem 0.3rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+      width: 90% !important;
+      overflow: scroll !important;
+      svg {
+        width: inherit !important;
+        position: inherit !important;
+      }
     }
 
     .controls {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-
-      .control-item {
-        margin: 0 25px;
-      }
-
-      #player {
-        // display: none;
-        min-width: 500px;
-        min-height: 15px;
-        background-color: black;
-        color: white;
-      }
-    }
-  }
-
-  .star-scores, .next-page {
-    display: flex;
-    flex-shrink: 1;
-    justify-content: space-between;
-    padding-top: 20%;
-  }
-
-  .star_scores {
-    #pitch-score, #rhythm-score {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
       justify-content: space-around;
-      align-items: center;
+      width: 100%;
+      .control-item {
+        margin: 1rem 0;
+      }
+      #player {
+        border-radius: 2rem;
+        box-shadow: 0.3rem 0.3rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+        width: 90%;
+      }
     }
+  }
+
+  .next-page {
+    grid-area: 1 / -2 / 6 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-.stars-heading {
-  font: {
-    family: 'Rufina', serif;
-    size: 16px;
+@media (max-width: 750px) {
+  .sight-reading {
+    display: block;
+
+    .sheet-music {
+      margin: 0 5%;
+    }
   }
-  color: #F7F9FB;
-  margin: 5%;
 }

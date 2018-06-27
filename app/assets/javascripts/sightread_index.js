@@ -1,84 +1,80 @@
-const exercise = $('.paper').first();
-const exerciseId = exercise.attr('id');
-const userEmail = $('.navbar').attr('id');
-const player = $('#player');
+const exercise = $('.sheet-music').first()
+const exerciseId = exercise.attr('id')
+const userEmail = $('.navbar').attr('id')
+const player = $('#player')
 
-const recorder = new MicRecorder(
-  {bitRate: 128}
-);
+const recorder = new MicRecorder({bitRate: 128})
 
-const showScore = function(pitchScore, rhythmScore){
-  $('.star-scores').append($(`<p class='stars-heading'>Pitch Score: ${pitchScore} out of 5</p>`));
-  $('.star-scores').append($(`<p class='stars-heading'>Rhythm Score: ${rhythmScore} out of 5</p>`));
+const showScore = (pitchScore, rhythmScore) => {
+  for(i = 0; i < pitchScore; i++){
+    $(`#pitch-star-${i}`).attr('src', 'assets/star-icon.svg')
+  }
+  for(i = 0; i < rhythmScore; i++){
+    $(`#rhythm-star-${i}`).attr('src', 'assets/star-icon.svg')
+  }
+  $('.star-score').show()
 }
 
-const getSheetMusic = function(song, label){
-  $('#loader-gif').hide();
-  var newAttempt = `M: ${song.tse}\n` +
-                   `L: ${song.each_beat}\n` +
-                   `K: ${song.key}\n` +
-                   `${song.notes.join(' ')}` + '|]';
-  var attemptScore = $('.music').append($('<div>', {class: 'paper', id: label}));
-  ABCJS.renderAbc(label, newAttempt);
+const getSheetMusic = (notes) => {
+  $('#loader-gif').hide()
+  $('#attempt-song').append(notes + '|]')
+  ABCJS.renderAbc('attempt-song', $('#attempt-song').html())
+  $('.attempt').show()
 }
 
-const sendAttempt = function(file){
-  player.src = URL.createObjectURL(file);
-  $('#loader-gif').show();
-  let formData = new FormData();
-  formData.append('audio', file);
-  formData.append('user_email', userEmail);
+
+const sendAttempt = (file) => {
+  $('.controls').first().hide()
+  $('#loader-gif').show()
+  let recording = URL.createObjectURL(file)
+  $('#mp3_src').attr('src', recording)
+  player[0].pause()
+  player[0].load()
+  let formData = new FormData()
+  formData.append('audio', file)
+  formData.append('user_email', userEmail)
 
   fetch(`/api/v1/exercises/${exerciseId}/attempts`, {
     method: 'POST',
     body: formData
   })
-  .then((response) => response.json())
-  .then(function(response){
-    getSheetMusic(response.song, 'attempt-song');
-    showScore(response.pitch_score, response.rhythm_score);
+  .then(response => response.json())
+  .then(response => {
+    getSheetMusic(response.song.notes)
+    showScore(response.pitch_score, response.rhythm_score)
   })
   .catch((error) => console.error('Error:', error))
 }
 
-const stopRecording = function(){
+const stopRecording = () => {
   recorder.stop().getMp3().then(([buffer, blob]) => {
     let file = new File(buffer, 'input.mp3', {
       type: blob.type,
       lastModified: Date.now()
     })
-    sendAttempt(file);
+    sendAttempt(file)
   })
 }
 
-const startRecording = function(){
+const startRecording = () => {
+  $('.start').hide()
+  $('.stop').show()
   recorder.start().then(() => {
-    $('.stop').on('click', function(){
-      $(this).hide();
-      $('#record-border').hide();
-      $('#upload').hide();
-      stopRecording();
-    });
+    $('.stop').click(() => stopRecording())
   })
 }
 
-$(document).ready(function(){
-  ABCJS.renderAbc(exerciseId, exercise.html());
-  $('.stop').hide();
+$(document).ready(() => {
+  ABCJS.renderAbc(exerciseId, exercise.html())
+  $('.attempt').hide()
+  $('.start').show()
+  $('.stop').hide()
+  $('.star-score').hide()
 })
 
-$('#upload').on('change', function(e) {
-  let file = e.target.files[0];
-  let fileName = e.target.value.split('\\').pop();
-  if(fileName) {
-    $('label').html(fileName);
-  }
-  sendAttempt(file);
-  $('#upload').off();
+$('#upload').change(event => {
+  let file = event.target.files[0]
+  sendAttempt(file)
 });
 
-$('.start').on('click', function(){
-  $(this).hide();
-  $('.stop').show();
-  startRecording();
-});
+$('.start').click(() => startRecording());

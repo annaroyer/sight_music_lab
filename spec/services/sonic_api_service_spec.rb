@@ -9,9 +9,7 @@ describe SonicApiService do
 
           melody_result = SonicApiService.post_file(url)
 
-          expect(melody_result[:key]).to eq("A# Maj")
-          expect(melody_result[:notes].count).to eq(13)
-          expect(melody_result[:notes].first[:midi_pitch]).to eq(58.236053466796875)
+          expect(melody_result.first[:midi_pitch]).to eq(58.236053466796875)
         end
       end
     end

@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="nav-left">
     <%= image_tag 'treble-clef.svg', class: 'brand-img' %>
-    Sight Music Lab
+    <%= link_to 'Sight Music Lab', root_path, class: 'brand-link' %>
   </div>
   <div class="nav-right">
     <%= button_to 'Log In', '/auth/google', class: 'fancy-button' %>

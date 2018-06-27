@@ -4,35 +4,34 @@ $sky: #8FC1E3;
 $cloud: #F7F9FB;
 
 #upload {
-  width: 0.1px;
-	height: 0.1px;
 	opacity: 0;
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+	width: 0;
 }
 
 #upload + label {
-  border-radius: 3px;
-  padding: 10px;
-  color: #F7F9FB;
+  border-radius: 1rem;
+  width: 3em;
+	height: 3em;
+	display: flex;
+	justify-content: center;
   outline: none;
-  background-color: $medium-blue;
-  border-radius: 10px;
-  color: $cloud;
-  font: {
-    family: 'Raleway', sans-serif;
-    size: 15px;
-  }
-  width: 95px;
-  height: 10px;
+  background-color: $lake;
   display: flex;
-  justify-content: center;
   align-items: center;
+
+	.upload-icon {
+		width: 1.5em;
+	}
 }
 
 #upload:focus + label,
 #upload + label:hover {
-  opacity: 0.5;
-  background-color: $lake;
+  background-color: $medium-blue;
+	cursor: pointer;
+	.upload-icon {
+		width: 1.7em;
+	}
 }

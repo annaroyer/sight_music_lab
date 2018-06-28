@@ -20,6 +20,7 @@ const getSheetMusic = (notes) => {
   $('#attempt-song').append(notes + '|]')
   ABCJS.renderAbc('attempt-song', $('#attempt-song').html())
   $('#attempt-song').show()
+  $('audio').css('display', 'block')
 }
 
 const sendAttempt = (file) => {
@@ -29,7 +30,6 @@ const sendAttempt = (file) => {
   $('#mp3_src').attr('src', URL.createObjectURL(file))
   player[0].pause()
   player[0].load()
-  $('audio').css('display', 'block')
 
   let formData = new FormData()
   formData.append('audio', file)

@@ -19,6 +19,10 @@ $aquamarine: #02C8A7;
 
   .nav-left {
     font-size: 1.5em;
+    .brand-img {
+      max-height: 3rem;
+      margin-right: 0.5rem;
+    }
   }
 
   .brand-link, .brand-link:link, .brand-link:visited, .brand-link:hover, .brand-link:focus, .brand-link:active {
@@ -35,7 +39,6 @@ $aquamarine: #02C8A7;
   }
 
   .nav-item {
-    padding: 0rem 2rem;
     font-family: 'Raleway', sans-serif;
   }
 
@@ -45,6 +48,9 @@ $aquamarine: #02C8A7;
 
   #menu {
     visibility: collapse;
+    position: absolute;
+    top: 4em;
+    right: 1vw;
   }
 }
 
@@ -68,10 +74,9 @@ $aquamarine: #02C8A7;
 
     .nav-left {
       font-size: 1.3em;
-    }
-
-    .brand-img {
-      max-height: 2em;
+      .brand-img {
+        max-height: 2em;
+      }
     }
 
     .nav-right {
@@ -84,9 +89,6 @@ $aquamarine: #02C8A7;
       opacity: 0.9;
       text-align: center;
       list-style-type: none;
-      position: absolute;
-      top: 4em;
-      right: 1vw;
       box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
 
       li {

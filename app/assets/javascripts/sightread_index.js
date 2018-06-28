@@ -22,7 +22,6 @@ const getSheetMusic = (notes) => {
   $('.attempt').show()
 }
 
-
 const sendAttempt = (file) => {
   $('.controls').first().hide()
   $('#loader-gif').show()

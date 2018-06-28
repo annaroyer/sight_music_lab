@@ -12,23 +12,25 @@ const showScore = (pitchScore, rhythmScore) => {
   for(i = 0; i < rhythmScore; i++){
     $(`#rhythm-star-${i}`).attr('src', 'assets/star-icon.svg')
   }
-  $('.star-score').show()
+  $('.star-score').css('display', 'flex')
 }
 
 const getSheetMusic = (notes) => {
   $('#loader-gif').hide()
   $('#attempt-song').append(notes + '|]')
   ABCJS.renderAbc('attempt-song', $('#attempt-song').html())
-  $('.attempt').show()
+  $('#attempt-song').show()
 }
 
 const sendAttempt = (file) => {
   $('.controls').first().hide()
   $('#loader-gif').show()
-  let recording = URL.createObjectURL(file)
-  $('#mp3_src').attr('src', recording)
+
+  $('#mp3_src').attr('src', URL.createObjectURL(file))
   player[0].pause()
   player[0].load()
+  $('audio').css('display', 'block')
+
   let formData = new FormData()
   formData.append('audio', file)
   formData.append('user_email', userEmail)
@@ -36,8 +38,7 @@ const sendAttempt = (file) => {
   fetch(`/api/v1/exercises/${exerciseId}/attempts`, {
     method: 'POST',
     body: formData
-  })
-  .then(response => response.json())
+  }).then(response => response.json())
   .then(response => {
     getSheetMusic(response.song.notes)
     showScore(response.pitch_score, response.rhythm_score)
@@ -63,18 +64,10 @@ const startRecording = () => {
   })
 }
 
-window.onload =  ABCJS.renderAbc(exerciseId, exercise.html())
-
-$(document).ready(() => {
-  $('.attempt').hide()
-  $('.start').show()
-  $('.stop').hide()
-  $('.star-score').hide()
-})
+window.onload = ABCJS.renderAbc(exerciseId, exercise.html())
 
 $('#upload').change(event => {
-  let file = event.target.files[0]
-  sendAttempt(file)
+  sendAttempt(event.target.files[0])
 });
 
-$('.start').click(() => startRecording());
+$('.start').click(() => startRecording())

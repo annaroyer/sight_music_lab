@@ -68,6 +68,12 @@
         width: 90%;
       }
     }
+    
+    #loader-gif {
+      display: none;
+      min-width: 90px;
+      margin: 6% 3% 3% 3%;
+    }
   }
 
   .next-page {

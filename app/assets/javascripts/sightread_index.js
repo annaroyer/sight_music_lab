@@ -63,8 +63,9 @@ const startRecording = () => {
   })
 }
 
+window.onload =  ABCJS.renderAbc(exerciseId, exercise.html())
+
 $(document).ready(() => {
-  ABCJS.renderAbc(exerciseId, exercise.html())
   $('.attempt').hide()
   $('.start').show()
   $('.stop').hide()
